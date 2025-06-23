@@ -1,0 +1,2026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Star Organic Farm - Premium organic products, spices, cereals, pulses, and cooking oils since 1988">
+    <meta name="keywords" content="organic products, spices, cereals, pulses, cooking oils, wheat, rice, organic farm, Pakistan">
+    <title>Products - Star Organic Farm - Premium Organic Products Since 1988</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="search.js"></script>
+    <style>
+        :root {
+            --primary-yellow: #FFD700;
+            --dark-yellow: #FFA500;
+            --primary-black: #1a1a1a;
+            --secondary-black: #2d2d2d;
+            --text-light: #ffffff;
+            --text-dark: #333333;
+            --bg-light: #ffffff;
+            --bg-dark: #121212;
+            --card-light: #ffffff;
+            --card-dark: #1e1e1e;
+            --success-green: #28a745;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
+            transition: all 0.3s ease;
+            background-color: var(--bg-dark); /* Always dark mode */
+            color: var(--text-light); /* Always light text */
+            padding-top: 90px;
+        }
+
+        /* Navbar Styles (Consistent with other pages) */
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-black), var(--secondary-black));
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--primary-yellow) !important;
+            text-decoration: none;
+        }
+
+        .navbar-nav .nav-link {
+            color: var(--text-light) !important;
+            font-weight: 500;
+            margin: 0 0.75rem;
+            transition: all 0.3s ease;
+            position: relative;
+            white-space: nowrap;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: var(--primary-yellow) !important;
+            transform: translateY(-2px);
+        }
+
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: var(--primary-yellow);
+            transition: all 0.3s ease;
+        }
+
+        /* MODIFIED CSS: This part ensures the active link gets the underline and yellow color */
+        .navbar-nav .nav-link:hover::after,
+        .navbar-nav .nav-link.active::after {
+            width: 100%;
+            left: 0;
+        }
+
+        .navbar-nav .nav-link.active {
+            color: var(--primary-yellow) !important;
+        }
+        /* END OF MODIFIED CSS */
+
+
+        /* Cart Icon */
+        .cart-icon {
+            position: relative;
+            background: var(--primary-yellow);
+            border: none;
+            border-radius: 50px;
+            padding: 0.5rem 1rem;
+            color: var(--primary-black);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-right: 1rem;
+            cursor: pointer;
+        }
+
+        .cart-icon:hover {
+            background: var(--dark-yellow);
+            transform: scale(1.05);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #dc3545;
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            min-width: 24px;
+        }
+
+        /* Search Bar Styles */
+        .navbar .form-control {
+            border-radius: 20px;
+            border: 1px solid #666; /* Adjusted for dark mode */
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            margin-right: 0.5rem;
+            background-color: #444; /* Adjusted for dark mode */
+            color: var(--text-light);
+        }
+
+        .navbar .btn-outline-success {
+            border-radius: 20px;
+            border: 1px solid var(--primary-yellow);
+            color: var(--primary-yellow);
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .navbar .btn-outline-success:hover {
+            background-color: var(--primary-yellow);
+            color: var(--primary-black);
+        }
+
+        /* Products Page Header */
+        .products-header {
+            background: var(--card-dark); /* Always dark */
+            padding: 2rem 0;
+            border-bottom: 1px solid #333; /* Darker border */
+            margin-bottom: 3rem;
+        }
+
+        .page-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--text-light); /* Always light text */
+        }
+
+        .page-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--primary-yellow);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        /* Products Section */
+        .products-section {
+            padding: 0 0 5rem 0;
+        }
+
+        .category-filter {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 2px solid var(--primary-yellow);
+            color: var(--primary-yellow);
+            padding: 0.75rem 2rem;
+            margin: 0.5rem;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary-yellow);
+            color: var(--primary-black);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        /* Product Cards */
+        .product-card {
+            background: var(--card-dark); /* Always dark */
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(255,255,255,0.1); /* Adjusted shadow for dark mode */
+            transition: all 0.3s ease;
+            margin-bottom: 3rem;
+            cursor: pointer;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255,255,255,0.2); /* Adjusted shadow for dark mode */
+        }
+
+        .product-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-light); /* Always light text */
+            line-height: 1.3;
+        }
+
+        .product-description {
+            color: #ccc; /* Adjusted for dark mode */
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            flex-grow: 1;
+            font-weight: 400;
+        }
+
+        .product-price {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-yellow);
+            margin-bottom: 1rem;
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .stars {
+            color: var(--primary-yellow);
+            margin-right: 0.5rem;
+        }
+
+        .rating-text {
+            color: #ccc; /* Adjusted for dark mode */
+            font-size: 0.9rem;
+            font-weight: 400;
+        }
+
+        /* Quantity and Cart Controls */
+        .product-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            background: #333; /* Adjusted for dark mode */
+            border-radius: 25px;
+            padding: 0.25rem;
+        }
+
+        .quantity-btn {
+            background: var(--primary-yellow);
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-black);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quantity-btn:hover {
+            background: var(--dark-yellow);
+            transform: scale(1.1);
+        }
+
+        .quantity-display {
+            min-width: 40px;
+            text-align: center;
+            font-weight: 600;
+            color: var(--text-light); /* Always light text */
+        }
+
+        .add-to-cart-btn {
+            background: linear-gradient(135deg, var(--primary-yellow), var(--dark-yellow));
+            border: none;
+            color: var(--primary-black);
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            flex-grow: 1;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .add-to-cart-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        .add-to-cart-btn.adding {
+            background: var(--success-green);
+            color: white;
+        }
+
+        .view-details-btn {
+            background: transparent;
+            border: 2px solid var(--primary-yellow);
+            color: var(--primary-yellow);
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 500;
+            width: 100%;
+            transition: all 0.3s ease;
+            margin-top: 0.5rem;
+        }
+
+        .view-details-btn:hover {
+            background: var(--primary-yellow);
+            color: var(--primary-black);
+            transform: translateY(-2px);
+        }
+
+        /* Cart Sidebar (Consistent with other pages) */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100vh;
+            background: var(--card-dark); /* Always dark */
+            box-shadow: -5px 0 15px rgba(255,255,255,0.1); /* Adjusted shadow for dark mode */
+            transition: all 0.3s ease;
+            z-index: 1050;
+            overflow-y: auto;
+        }
+
+        .cart-sidebar.open {
+            right: 0;
+        }
+
+        .cart-header {
+            background: var(--primary-black);
+            color: var(--text-light);
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .cart-content {
+            padding: 1.5rem;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #333; /* Adjusted for dark mode */
+        }
+
+        .cart-item-image {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-right: 1rem;
+        }
+
+        .cart-item-info {
+            flex-grow: 1;
+        }
+
+        .cart-item-title {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+            color: var(--text-light); /* Always light text */
+        }
+
+        .cart-item-price {
+            color: var(--primary-yellow);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .cart-item-quantity {
+            color: #ccc; /* Adjusted for dark mode */
+            font-size: 0.8rem;
+        }
+
+        .remove-item {
+            background: #dc3545;
+            border: none;
+            color: white;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .remove-item:hover {
+            background: #c82333;
+            transform: scale(1.1);
+        }
+
+        .cart-total {
+            background: var(--primary-yellow);
+            color: var(--primary-black);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .checkout-btn {
+            background: var(--primary-black);
+            color: var(--text-light);
+            border: none;
+            padding: 1rem;
+            border-radius: 10px;
+            width: 100%;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .checkout-btn:hover {
+            background: var(--secondary-black);
+            transform: translateY(-2px);
+        }
+
+        /* Cart Overlay */
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1040;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .cart-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary-yellow);
+            color: var(--primary-black);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1000;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--dark-yellow);
+            transform: translateY(-3px);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes cartBounce {
+            0%, 20%, 60%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            80% {
+                transform: translateY(-5px);
+            }
+        }
+
+        .cart-animation {
+            animation: cartBounce 0.6s ease;
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease;
+        }
+
+        /* Product Options Modal Styling */
+        @keyframes modalPopIn {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -45%) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        #productOptionsModal .modal-dialog {
+            transform: translate(-50%, -50%);
+            top: 45%;
+            left: 50%;
+            position: fixed;
+            max-width: 450px; /* Shrink the max-width of the modal */
+        }
+
+        #productOptionsModal.fade .modal-dialog {
+            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+            opacity: 0;
+        }
+
+        #productOptionsModal.show .modal-dialog {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+            animation: modalPopIn 0.3s forwards;
+        }
+
+        #productOptionsModal .modal-content {
+            background-color: var(--card-dark);
+            color: var(--text-light);
+            border-radius: 15px;
+        }
+
+        #productOptionsModal .modal-header {
+            border-bottom: 1px solid #333;
+            padding: 1rem 1.5rem; /* Adjusted padding */
+        }
+
+        #productOptionsModal .modal-title {
+            color: var(--primary-yellow);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1.5rem; /* Slightly smaller font size */
+        }
+
+        #productOptionsModal .btn-close {
+            filter: invert(1);
+        }
+
+        #productOptionsModal .modal-body {
+            padding: 1.5rem; /* Adjusted padding */
+        }
+
+        #productOptionsModal .product-modal-description {
+            color: #bbb;
+            margin-bottom: 1rem;
+            font-size: 0.9rem; /* Slightly smaller font size */
+        }
+
+        #productOptionsModal .modal-variant-options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.8rem; /* Reduced spacing between options */
+            margin-top: 1rem;
+            margin-bottom: 1rem; /* Reduced margin */
+            padding: 0 5px; /* Reduced padding */
+        }
+
+        #productOptionsModal .modal-variant-options .variant-option {
+            background: #252525;
+            border: 2px solid #555;
+            color: var(--text-light);
+            padding: 0.6rem 1rem; /* Reduced padding */
+            border-radius: 10px; /* Slightly less rounded */
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            flex: 1 1 auto;
+            min-width: 80px; /* Reduced min-width */
+            max-width: 150px; /* Reduced max-width */
+            font-size: 0.9rem; /* Smaller font size for variant text */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        #productOptionsModal .modal-variant-options .variant-option:hover {
+            border-color: var(--primary-yellow);
+            background-color: #383838;
+            transform: translateY(-3px); /* Slightly less pronounced lift */
+            box-shadow: 0 6px 12px rgba(255, 215, 0, 0.4); /* Reduced shadow */
+        }
+
+        #productOptionsModal .modal-variant-options .variant-option.active {
+            border-color: var(--primary-yellow);
+            background-color: var(--primary-yellow);
+            color: var(--primary-black);
+            transform: translateY(-1px); /* Slightly less pronounced lift */
+            box-shadow: 0 4px 10px rgba(255, 215, 0, 0.5); /* Reduced shadow */
+        }
+        #productOptionsModal .modal-variant-options .variant-option.active .variant-price,
+        #productOptionsModal .modal-variant-options .variant-option.active .variant-weight {
+            color: var(--primary-black);
+        }
+
+        #productOptionsModal .modal-quantity-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem; /* Reduced gap */
+            margin-top: 1rem;
+            margin-bottom: 1rem; /* Reduced margin */
+        }
+
+        #productOptionsModal .modal-quantity-btn {
+            background: var(--primary-yellow);
+            border: none;
+            width: 35px; /* Smaller buttons */
+            height: 35px;
+            border-radius: 50%;
+            font-size: 1rem; /* Smaller font size */
+            font-weight: 600;
+            color: var(--primary-black);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        #productOptionsModal .modal-quantity-btn:hover {
+            background: var(--dark-yellow);
+            transform: scale(1.1); /* Slightly less pronounced scale */
+        }
+
+        #productOptionsModal .modal-quantity-display {
+            min-width: 40px; /* Smaller width */
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.1rem; /* Slightly smaller font size */
+            color: var(--text-light);
+        }
+
+        #productOptionsModal .modal-product-price {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.6rem; /* Smaller price font size */
+            font-weight: 700;
+            color: var(--primary-yellow);
+            text-align: center;
+            margin-top: 0.8rem; /* Reduced top margin */
+            margin-bottom: 1.2rem; /* Reduced bottom margin */
+        }
+
+        #productOptionsModal .modal-footer {
+            border-top: 1px solid #333;
+            justify-content: center;
+            padding: 1rem 1.5rem; /* Adjusted padding */
+        }
+
+        #productOptionsModal .modal-add-to-cart-btn {
+            background: linear-gradient(135deg, var(--primary-yellow), var(--dark-yellow));
+            border: none;
+            color: var(--primary-black);
+            padding: 0.75rem 2rem; /* Reduced padding */
+            border-radius: 25px; /* Slightly less rounded */
+            font-weight: 600; /* Slightly less bold */
+            font-size: 1.1rem; /* Slightly smaller font size */
+            transition: all 0.3s ease;
+        }
+
+        #productOptionsModal .modal-add-to-cart-btn:hover {
+            transform: translateY(-2px); /* Slightly less pronounced lift */
+            box-shadow: 0 6px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        #productOptionsModal .modal-add-to-cart-btn.adding {
+            background: var(--success-green);
+            color: white;
+        }
+
+        /* Footer (Consistent with other pages) */
+        .footer {
+            background: linear-gradient(135deg, var(--primary-black), var(--secondary-black));
+            color: var(--text-light);
+            padding: 3rem 0 1rem;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            font-family: 'Outfit', sans-serif;
+            color: var(--primary-yellow);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            display: block;
+            transition: all 0.3s ease;
+            font-weight: 400;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-yellow);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            color: #999;
+            font-weight: 400;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 991px) { /* Adjust breakpoint for navbar collapse */
+            .navbar-nav {
+                margin-top: 1rem;
+            }
+            .navbar .form-control {
+                margin-right: 0;
+                margin-bottom: 0.5rem;
+                width: 100%;
+            }
+            .navbar .btn-outline-success {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2.5rem;
+            }
+            
+            .product-card {
+                margin-bottom: 2rem;
+            }
+            
+            .product-controls {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .quantity-controls {
+                align-self: stretch;
+                justify-content: center;
+            }
+
+            .cart-sidebar {
+                width: 100%;
+                right: -100%;
+            }
+            /* Adjust modal for small screens */
+            #productOptionsModal .modal-dialog {
+                margin: 0.5rem;
+                max-width: 90%; /* Ensure it's still responsive on small screens */
+            }
+            #productOptionsModal .modal-title {
+                font-size: 1.5rem;
+            }
+            #productOptionsModal .modal-add-to-cart-btn {
+                width: 100%;
+            }
+            #productOptionsModal .modal-variant-options .variant-option {
+                flex: 1 1 45%; /* Adjust for 2 columns on small screens */
+                max-width: 48%;
+                padding: 0.6rem 1rem; /* Adjust padding */
+                font-size: 0.85rem;
+            }
+            #productOptionsModal .modal-quantity-btn {
+                width: 30px;
+                height: 30px;
+                font-size: 0.9rem;
+            }
+            #productOptionsModal .modal-quantity-display {
+                min-width: 35px;
+                font-size: 0.9rem;
+            }
+        }
+        @media (max-width: 480px) {
+            #productOptionsModal .modal-variant-options .variant-option {
+                flex: 1 1 100%; /* Stack on very small screens */
+                max-width: 100%;
+                margin: 0.5rem 0; /* Stacked, so vertical margin only */
+            }
+        }
+
+        /* Hamburger Menu Icon Styling */
+        .navbar-toggler-icon {
+            /* Bootstrap default is a gray SVG, override to white */
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: 0 0 0 0.25rem rgba(255, 215, 0, 0.5); /* Yellow glow */
+            outline: 0; /* Remove default outline */
+        }
+    </style>
+</head>
+<body class="dark-mode">
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-leaf"></i> Star Organic Farm
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0"> 
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="queries.html">Queries</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="showcase.html">Showcase Gallery</a>
+                    </li>
+                </ul>
+                <form class="d-flex me-2" role="search" action="products.html" method="get">
+                    <input class="form-control me-2" type="search" id="search-input" name="query" placeholder="Search products..." aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form> 
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0"> 
+                    <li class="nav-item">
+                        <button class="cart-icon" onclick="toggleCart()">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count" id="cart-count">0</span>
+                        </button>
+                    </li>
+                    </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="products-header">
+        <div class="container">
+            <h1 class="page-title">Our Premium Products</h1>
+            <p class="page-subtitle">Discover our extensive range of organic products from across South Asia</p>
+        </div>
+    </section>
+
+    <section id="products" class="products-section">
+        <div class="container">
+            <div class="category-filter">
+                <button class="filter-btn active" onclick="filterProducts('all')">All Products</button>
+                <button class="filter-btn" onclick="filterProducts('rice')">Rice & Rice Products</button>
+                <button class="filter-btn" onclick="filterProducts('spices')">Spices & Condiments</button>
+                <button class="filter-btn" onclick="filterProducts('pulses')">Pulses</button>
+                <button class="filter-btn" onclick="filterProducts('oils')">Cooking Oils</button>
+                <button class="filter-btn" onclick="filterProducts('wheat')">Wheat & Flour</button>
+                <button class="filter-btn" onclick="filterProducts('cereals')">Nutritious Cereals</button>
+                <button class="filter-btn" onclick="filterProducts('nuts')">Nuts</button>
+                <button class="filter-btn" onclick="filterProducts('fruits')">Fruit Pulps</button>
+                <button class="filter-btn" onclick="filterProducts('agro')">Agro Products</button>
+                <button class="filter-btn" onclick="filterProducts('sweeteners')">Natural Sweeteners</button>
+            </div>
+
+            <div class="row" id="products-grid">
+                </div>
+        </div>
+    </section>
+
+    <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3 class="cart-title">Shopping Cart</h3>
+            <button class="close-cart" onclick="toggleCart()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-content">
+            <div id="cart-items">
+                <p style="text-align: center; color: #ccc; margin-top: 2rem;">Your cart is empty</p>
+            </div>
+            <div class="cart-total" id="cart-total" style="display: none;">
+                Total: PKR 0
+            </div>
+            <button class="checkout-btn" id="checkout-btn" style="display: none;" onclick="checkout()">
+                Proceed to Checkout
+            </button>
+        </div>
+    </div>
+
+    <div class="modal fade" id="productOptionsModal" tabindex="-1" aria-labelledby="productOptionsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="productOptionsModalLabel">Select Options</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h4 class="text-center" id="modal-product-title"></h4>
+                <p class="text-center product-modal-description" id="modal-product-description"></p>
+                <hr style="border-color: #555;">
+                <div class="text-center mb-3">
+                    <label class="form-label mb-2">Select Weight:</label>
+                    <div class="modal-variant-options d-flex flex-wrap justify-content-center gap-3" id="modal-variant-options">
+                        </div>
+                </div>
+                <div class="text-center mb-3">
+                    <label class="form-label mb-2">Quantity:</label>
+                    <div class="modal-quantity-controls d-flex justify-content-center align-items-center gap-3">
+                        <button class="modal-quantity-btn" id="modal-decrease-qty">-</button>
+                        <span class="modal-quantity-display" id="modal-quantity-display">1</span>
+                        <button class="modal-quantity-btn" id="modal-increase-qty">+</button>
+                    </div>
+                </div>
+                <div class="modal-product-price" id="modal-product-price">PKR 0</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="modal-add-to-cart-btn" id="modal-add-to-cart-btn">
+                    <i class="fas fa-shopping-cart"></i> Add to Cart
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Star Organic Farm</h4>
+                    <p>Premium organic products since 1988. We are committed to providing the finest quality organic products to consumers across Pakistan and beyond.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <a href="index.html">Home</a>
+                    <a href="products.html">Products</a>
+                    <a href="about.html">About Us</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="queries.html">Queries</a>
+                    <a href="showcase.html">Showcase Gallery</a>
+                    <a href="shippinginfo.html">Shipping Info</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Product Categories</h4>
+                    <a href="products.html?category=rice">Rice & Rice Products</a>
+                    <a href="products.html?category=spices">Spices & Condiments</a>
+                    <a href="products.html?category=pulses">Pulses & Lentils</a>
+                    <a href="products.html?category=oils">Cooking Oils</a>
+                    <a href="products.html?category=wheat">Wheat & Flour</a>
+                    <a href="products.html?category=cereals">Nutritious Cereals</a>
+                    <a href="products.html?category=nuts">Nuts</a>
+                    <a href="products.html?category=fruits">Fruit Pulps</a>
+                    <a href="products.html?category=agro">Agro Products</a>
+                    <a href="products.html?category=sweeteners">Natural Sweeteners</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Organic Farm Road, Lahore, Punjab, Pakistan</p>
+                    <p><i class="fas fa-phone"></i> +92 300 1234567</p>
+                    <p><i class="fas fa-envelope"></i> info@starorganicfarm.pk</p>
+                    <p><i class="fas fa-clock"></i> Mon - Sat: 9:00 AM - 6:00 PM</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Star Organic Farm. All rights reserved. | Established 1988 | Made in Pakistan</p>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+         // Product data (copied from product-detail.html for consistency)
+         const products = {
+            'basmati-rice': {
+                title: 'Premium Basmati Rice',
+                description: 'Aromatic long-grain basmati rice from the foothills of Himalayas. Aged for 2 years for enhanced flavor and aroma.',
+                rating: 4.8,
+                reviews: 156,
+                variants: [
+                    { weight: '1kg', price: 250 },
+                    { weight: '2kg', price: 480 },
+                    { weight: '5kg', price: 1150 },
+                    { weight: '10kg', price: 2200 }
+                ],
+                image: 'images/Rice/basmati-rice/1.jpg',
+                category: 'rice'
+            },
+            'brown-rice': {
+                title: 'Organic Brown Rice',
+                description: 'Nutritious whole grain brown rice rich in fiber, vitamins, and minerals. Perfect for health-conscious individuals.',
+                rating: 4.6,
+                reviews: 89,
+                variants: [
+                    { weight: '1kg', price: 200 },
+                    { weight: '2kg', price: 380 },
+                    { weight: '5kg', price: 900 },
+                    { weight: '10kg', price: 1700 }
+                ],
+                image: 'images/Rice/organic-brown-rice/1.jpg',
+                category: 'rice'
+            },
+            'jasmine-rice': {
+                title: 'Jasmine Rice',
+                description: 'Fragrant jasmine rice with delicate floral aroma. Soft, sticky texture perfect for Asian cuisine and everyday meals.',
+                rating: 4.7,
+                reviews: 123,
+                variants: [
+                    { weight: '1kg', price: 280 },
+                    { weight: '2kg', price: 540 },
+                    { weight: '5kg', price: 1300 },
+                    { weight: '10kg', price: 2500 }
+                ],
+                image: 'images/rice/jasmine-rice/1.jpg',
+                category: 'rice'
+            },
+            'wild-rice': {
+                title: 'Wild Rice',
+                description: 'Nutrient-dense wild rice with nutty flavor and chewy texture. Rich in protein and antioxidants.',
+                rating: 4.5,
+                reviews: 67,
+                variants: [
+                    { weight: '1kg', price: 400 },
+                    { weight: '2kg', price: 750 },
+                    { weight: '5kg', price: 1800 },
+                    { weight: '10kg', price: 3500 }
+                ],
+                image: 'images/Rice/wild-rice/1.jpg',
+                category: 'rice'
+            },
+            'red-rice': {
+                title: 'Red Rice',
+                description: 'Antioxidant-rich red rice with distinctive color and earthy flavor. Excellent source of iron and fiber.',
+                rating: 4.8,
+                reviews: 91,
+                variants: [
+                    { weight: '1kg', price: 360 },
+                    { weight: '2kg', price: 700 },
+                    { weight: '5kg', price: 1650 },
+                    { weight: '10kg', price: 3100 }
+                ],
+                image: 'images/Rice/red-rice/1.jpg ',
+                category: 'rice'
+            },
+            'sella-rice': {
+                title: 'Golden Sella Rice',
+                description: 'Premium parboiled basmati rice with golden color. Retains more nutrients and has excellent cooking properties.',
+                rating: 4.5,
+                reviews: 78,
+                variants: [
+                    { weight: '1kg', price: 220 },
+                    { weight: '2kg', price: 420 },
+                    { weight: '5kg', price: 1000 },
+                    { weight: '10kg', price: 1900 }
+                ],
+                image: 'images/Rice/golden-sella-rice/1.jpg',
+                category: 'rice'
+            },
+            'turmeric-powder': {
+                title: 'Organic Turmeric Powder (Haldi)',
+                description: 'Pure organic turmeric with high curcumin content. Known for anti-inflammatory properties and vibrant golden color.',
+                rating: 4.9,
+                reviews: 234,
+                variants: [
+                    { weight: '100g', price: 160 },
+                    { weight: '250g', price: 380 },
+                    { weight: '500g', price: 720 },
+                    { weight: '1kg', price: 1400 }
+                ],
+                image: 'images/spice/Turmeric/1.jpg',
+                category: 'spices'
+            },
+            'red-chili-powder': {
+                title: 'Red Chili Powder (Lal Mirch)',
+                description: 'Premium quality red chili powder with perfect heat and vibrant color. Essential for authentic South Asian cuisine.',
+                rating: 4.7,
+                reviews: 178,
+                variants: [
+                    { weight: '100g', price: 120 },
+                    { weight: '250g', price: 280 },
+                    { weight: '500g', price: 520 },
+                    { weight: '1kg', price: 980 }
+                ],
+                image: 'images/spice/lal-mirch/1.webp',
+                category: 'spices'
+            },
+            'garam-masala': {
+                title: 'Garam Masala Blend',
+                description: 'Authentic Pakistani garam masala with cardamom, cinnamon, cloves, and other aromatic spices. Perfect for curries.',
+                rating: 4.9,
+                reviews: 267,
+                variants: [
+                    { weight: '100g', price: 250 },
+                    { weight: '250g', price: 600 },
+                    { weight: '500g', price: 1150 },
+                    { weight: '1kg', price: 2200 }
+                ],
+                image: 'images/spice/garam-masala/1.webp',
+                category: 'spices'
+            },
+            'organic-tomato-ketchup': {
+                title: 'Organic Tomato Ketchup',
+                description: 'Premium organic tomato ketchup made from fresh, ripe tomatoes. A healthier choice with no artificial preservatives or colors.',
+                rating: 4.6,
+                reviews: 145,
+                variants: [
+                    { weight: '300g', price: 180 },
+                    { weight: '500g', price: 280 },
+                    { weight: '1kg', price: 500 }
+                ],
+                image: 'images/spice/Ketchup/1.jpg',
+                category: 'spices'
+            },
+            'hot-chilli-sauce': {
+                title: 'Fiery Hot Chilli Sauce',
+                description: 'Fiery hot chili sauce crafted from selected red chilies. Adds a spicy kick to any meal or snack.',
+                rating: 4.8,
+                reviews: 198,
+                variants: [
+                    { weight: '250g', price: 200 },
+                    { weight: '500g', price: 380 },
+                    { weight: '1kg', price: 700 }
+                ],
+                image: 'images/Spice/chilli-sauce/1.jpg',
+                category: 'spices'
+            },
+            'premium-soy-sauce': {
+                title: 'Premium Soy Sauce',
+                description: 'Authentic premium soy sauce, naturally brewed for a rich umami flavor. Enhances Asian dishes and marinades.',
+                rating: 4.5,
+                reviews: 123,
+                variants: [
+                    { weight: '250ml', price: 250 },
+                    { weight: '500ml', price: 480 },
+                    { weight: '1L', price: 900 }
+                ],
+                image: 'images/spice/soy-sauce/1.webp',
+                category: 'spices'
+            },
+            'toor-dal': {
+                title: 'Organic Toor Dal (Arhar Dal)',
+                description: 'High-quality toor dal rich in protein and essential amino acids. Staple pulse for daily South Asian meals.',
+                rating: 4.8,
+                reviews: 145,
+                variants: [
+                    { weight: '500g', price: 180 },
+                    { weight: '1kg', price: 340 },
+                    { weight: '2kg', price: 650 },
+                    { weight: '5kg', price: 1500 }
+                ],
+                image: 'images/Lentils/Toor/1.jpg',
+                category: 'pulses'
+            },
+            'yellow-moong-dal': {
+                title: 'Yellow Moong Dal',
+                description: 'Premium yellow moong dal, easy to digest and perfect for daily meals. Rich in protein and essential nutrients.',
+                rating: 4.6,
+                reviews: 112,
+                variants: [
+                    { weight: '500g', price: 220 },
+                    { weight: '1kg', price: 420 },
+                    { weight: '2kg', price: 800 },
+                    { weight: '5kg', price: 1900 }
+                ],
+                image: 'images/Lentils/Moong/1.jpg',
+                category: 'pulses'
+            },
+            'chana-dal': {
+                title: 'Chana Dal (Split Chickpeas)',
+                description: 'Premium chana dal with rich flavor and high protein content. Essential ingredient for Pakistani and Indian cuisine.',
+                rating: 4.7,
+                reviews: 167,
+                variants: [
+                    { weight: '500g', price: 200 },
+                    { weight: '1kg', price: 380 },
+                    { weight: '2kg', price: 720 },
+                    { weight: '5kg', price: 1700 }
+                ],
+                image: 'images/Lentils/Chana/1.jpg',
+                category: 'pulses'
+            },
+            'masoor-dal': {
+                title: 'Masoor Dal (Red Lentils)',
+                description: 'Quick-cooking red lentils rich in protein and iron. Perfect for soups and traditional dal recipes.',
+                rating: 4.5,
+                reviews: 98,
+                variants: [
+                    { weight: '500g', price: 190 },
+                    { weight: '1kg', price: 360 },
+                    { weight: '2kg', price: 680 },
+                    { weight: '5kg', price: 1600 }
+                ],
+                image: 'images/Lentils/Masoor/1.jpg',
+                category: 'pulses'
+            },
+            'mustard-oil': {
+                title: 'Cold Pressed Mustard Oil (Sarson Ka Tel)',
+                description: 'Pure cold-pressed mustard oil rich in omega-3 fatty acids. Traditional cooking oil with pungent flavor.',
+                rating: 4.9,
+                reviews: 203,
+                variants: [
+                    { weight: '500ml', price: 300 },
+                    { weight: '1L', price: 580 },
+                    { weight: '2L', price: 1100 },
+                    { weight: '5L', price: 2600 }
+                ],
+                image: 'images/Oil/Mustard/1.jpg',
+                category: 'oils'
+            },
+            'coconut-oil': {
+                title: 'Virgin Coconut Oil (Nariyal Ka Tel)',
+                description: 'Extra virgin coconut oil with natural coconut aroma. Perfect for cooking, baking, and health benefits.',
+                rating: 4.7,
+                reviews: 167,
+                variants: [
+                    { weight: '500ml', price: 400 },
+                    { weight: '1L', price: 780 },
+                    { weight: '2L', price: 1500 },
+                    { weight: '5L', price: 3600 }
+                ],
+                image: 'images/Oil/Coconut/1.jpg',
+                category: 'oils'
+            },
+            'olive-oil': {
+                title: 'Extra Virgin Olive Oil',
+                description: 'Premium extra virgin olive oil with rich flavor and health benefits. Perfect for salads and light cooking.',
+                rating: 4.6,
+                reviews: 89,
+                variants: [
+                    { weight: '500ml', price: 800 },
+                    { weight: '1L', price: 1550 },
+                    { weight: '2L', price: 2950 },
+                    { weight: '5L', price: 7000 }
+                ],
+                image: 'images/Oil/Olive/1.jpg',
+                category: 'oils'
+            },
+            'whole-wheat-flour': {
+                title: 'Organic Whole Wheat Flour (Atta)',
+                description: 'Stone-ground whole wheat flour rich in fiber and nutrients. Perfect for making healthy rotis and bread.',
+                rating: 4.8,
+                reviews: 189,
+                variants: [
+                    { weight: '1kg', price: 100 },
+                    { weight: '2kg', price: 190 },
+                    { weight: '5kg', price: 450 },
+                    { weight: '10kg', price: 850 }
+                ],
+                image: 'images/Wheat/organic-wheat-flour/1.webp',
+                category: 'wheat'
+            },
+            'all-purpose-flour': {
+                title: 'All Purpose Flour (Maida)',
+                description: 'Premium quality all-purpose flour perfect for baking, making naan, and various Pakistani dishes.',
+                rating: 4.6,
+                reviews: 156,
+                variants: [
+                    { weight: '1kg', price: 80 },
+                    { weight: '2kg', price: 150 },
+                    { weight: '5kg', price: 350 },
+                    { weight: '10kg', price: 650 }
+                ],
+                image: 'images/Wheat/all-purpose-flour/1.webp',
+                category: 'wheat'
+            },
+            'semolina': {
+                title: 'Semolina (Suji)',
+                description: 'Fine quality semolina perfect for making halwa, upma, and various traditional sweets and dishes.',
+                rating: 4.7,
+                reviews: 134,
+                variants: [
+                    { weight: '500g', price: 120 },
+                    { weight: '1kg', price: 230 },
+                    { weight: '2kg', price: 440 },
+                    { weight: '5kg', price: 1050 }
+                ],
+                image: 'images/Wheat/Suji/1.jpg',
+                category: 'wheat'
+            },
+            'quinoa': {
+                title: 'Organic Quinoa',
+                description: 'Premium quinoa seeds, a complete protein source and superfood. Gluten-free and perfect for healthy meals.',
+                rating: 4.6,
+                reviews: 98,
+                variants: [
+                    { weight: '500g', price: 600 },
+                    { weight: '1kg', price: 1150 },
+                    { weight: '2kg', price: 2200 },
+                    { weight: '5kg', price: 5200 }
+                ],
+                image: 'images/cereals/quinoa/1.png',
+                category: 'cereals'
+            },
+            'rolled-oats': {
+                title: 'Rolled Oats',
+                description: 'Premium rolled oats perfect for healthy breakfast and baking. Rich in fiber and essential nutrients.',
+                rating: 4.9,
+                reviews: 156,
+                variants: [
+                    { weight: '500g', price: 240 },
+                    { weight: '1kg', price: 460 },
+                    { weight: '2kg', price: 880 },
+                    { weight: '5kg', price: 2100 }
+                ],
+                image: 'images/cereals/oats/1.jpg',
+                category: 'cereals'
+            },
+            'pearl-barley': {
+                title: 'Pearl Barley',
+                description: 'Nutritious pearl barley rich in fiber and minerals. Perfect for soups, stews, and healthy grain bowls.',
+                rating: 4.5,
+                reviews: 87,
+                variants: [
+                    { weight: '500g', price: 180 },
+                    { weight: '1kg', price: 340 },
+                    { weight: '2kg', price: 650 },
+                    { weight: '5kg', price: 1550 }
+                ],
+                image: 'images/cereals/barley/1.webp',
+                category: 'cereals'
+            },
+            'mixed-millet': {
+                title: 'Mixed Millet',
+                description: 'Nutritious millet blend rich in protein and minerals. Gluten-free alternative to wheat and rice.',
+                rating: 4.7,
+                reviews: 112,
+                variants: [
+                    { weight: '500g', price: 200 },
+                    { weight: '1kg', price: 380 },
+                    { weight: '2kg', price: 720 },
+                    { weight: '5kg', price: 1700 }
+                ],
+                image: 'images/cereals/millet/1.png',
+                category: 'cereals'
+            },
+            'premium-almonds': {
+                title: 'Premium Almonds (Badam)',
+                description: 'Premium quality almonds rich in vitamin E, healthy fats, and protein. Perfect for snacking and cooking.',
+                rating: 4.8,
+                reviews: 234,
+                variants: [
+                    { weight: '250g', price: 800 },
+                    { weight: '500g', price: 1550 },
+                    { weight: '1kg', price: 3000 },
+                    { weight: '2kg', price: 5800 }
+                ],
+                image: 'images/Nuts/Almonds/1.webp',
+                category: 'nuts'
+            },
+            'kashmir-walnuts': {
+                title: 'Kashmir Walnuts (Akhrot)',
+                description: 'Premium Kashmir walnuts rich in omega-3 fatty acids. Excellent for brain health and nutrition.',
+                rating: 4.7,
+                reviews: 167,
+                variants: [
+                    { weight: '250g', price: 1200 },
+                    { weight: '500g', price: 2300 },
+                    { weight: '1kg', price: 4400 },
+                    { weight: '2kg', price: 8400 }
+                ],
+                image: 'images/Nuts/Walnut/1.jpg',
+                category: 'nuts'
+            },
+            'premium-cashews': {
+                title: 'Premium Cashews (Kaju)',
+                description: 'Premium quality cashews with creamy texture. Perfect for cooking, snacking, and making sweets.',
+                rating: 4.8,
+                reviews: 201,
+                variants: [
+                    { weight: '250g', price: 1000 },
+                    { weight: '500g', price: 1900 },
+                    { weight: '1kg', price: 3600 },
+                    { weight: '2kg', price: 6900 }
+                ],
+                image: 'images/Nuts/Cashew/1.jpg',
+                category: 'nuts'
+            },
+            'mango-pulp': {
+                title: 'Premium Mango Pulp (Aam Ka Pulp)',
+                description: 'Pure mango pulp made from Alphonso mangoes. Perfect for making smoothies, desserts, and traditional sweets.',
+                rating: 4.9,
+                reviews: 189,
+                variants: [
+                    { weight: '500g', price: 350 },
+                    { weight: '1kg', price: 650 },
+                    { weight: '2kg', price: 1200 }
+                ],
+                image: 'images/Pulps/Mango/1.jpg',
+                category: 'fruits'
+            },
+            'guava-pulp': {
+                title: 'Fresh Guava Pulp (Amrood Ka Pulp)',
+                description: 'Rich guava pulp packed with vitamin C and natural sweetness. Ideal for juices, jams, and desserts.',
+                rating: 4.6,
+                reviews: 134,
+                variants: [
+                    { weight: '500g', price: 280 },
+                    { weight: '1kg', price: 520 },
+                    { weight: '2kg', price: 980 }
+                ],
+                image: 'images/Pulps/Guava/1.jpg',
+                category: 'fruits'
+            },
+            'apple-pulp': {
+                title: 'Organic Apple Pulp (Seb Ka Pulp)',
+                description: 'Pure apple pulp from organic apples. Rich in fiber and natural antioxidants, perfect for baby food and desserts.',
+                rating: 4.8,
+                reviews: 156,
+                variants: [
+                    { weight: '500g', price: 320 },
+                    { weight: '1kg', price: 600 },
+                    { weight: '2kg', price: 1150 }
+                ],
+                image: 'images/Pulps/Apple/1.webp',
+                category: 'fruits'
+            },
+            'organic-cotton-seeds': {
+                title: 'Organic Cotton Seeds (Kapas Ke Beej)',
+                description: 'High-quality organic cotton seeds for farming. Non-GMO variety with excellent germination rate and disease resistance.',
+                rating: 4.5,
+                reviews: 89,
+                variants: [
+                    { weight: '1kg', price: 450 },
+                    { weight: '5kg', price: 2100 },
+                    { weight: '10kg', price: 4000 }
+                ],
+                image: 'images/agro/cotton-seed/1.jpg',
+                category: 'agro'
+            },
+            'premium-wheat-seeds': {
+                title: 'Premium Wheat Seeds (Gandum Ke Beej)',
+                description: 'High-yield wheat seeds suitable for Pakistani climate. Drought-resistant variety with excellent grain quality.',
+                rating: 4.7,
+                reviews: 123,
+                variants: [
+                    { weight: '1kg', price: 180 },
+                    { weight: '5kg', price: 850 },
+                    { weight: '10kg', price: 1600 }
+                ],
+                image: 'images/agro/wheat-seed/1.jpg',
+                category: 'agro'
+            },
+            'organic-compost-fertilizer': {
+                title: 'Organic Compost Fertilizer (Jaivi Khad)',
+                description: 'Natural organic fertilizer made from decomposed plant matter. Enriches soil naturally without harmful chemicals.',
+                rating: 4.8,
+                reviews: 167,
+                variants: [
+                    { weight: '1kg', price: 300 },
+                    { weight: '5kg', price: 1400 },
+                    { weight: '10kg', price: 2700 }
+                ],
+                image: 'images/agro/organic-compost-fertilizer/1.jpg',
+                category: 'agro'
+            },
+            
+            'pure-wildflower-honey': {
+                title: 'Pure Wildflower Honey (Shahad)',
+                description: 'Raw, unprocessed wildflower honey with natural enzymes and antioxidants. Perfect natural sweetener.',
+                rating: 4.9,
+                reviews: 245,
+                variants: [
+                    { weight: '250g', price: 500 },
+                    { weight: '500g', price: 950 },
+                    { weight: '1kg', price: 1800 },
+                    { weight: '2kg', price: 3400 }
+                ],
+                image: 'images/Sweetners/Honey/1.jpg',
+                category: 'sweeteners'
+            },
+            'organic-jaggery': {
+                title: 'Organic Jaggery (Gur)',
+                description: 'Traditional unrefined sugar made from sugarcane. Rich in minerals and iron, perfect for healthy cooking and sweets.',
+                rating: 4.7,
+                reviews: 189,
+                variants: [
+                    { weight: '500g', price: 150 },
+                    { weight: '1kg', price: 280 },
+                    { weight: '2kg', price: 530 },
+                    { weight: '5kg', price: 1250 }
+                ],
+                image: 'images/Sweetners/Jaggery/1.jpg',
+                category: 'sweeteners'
+            }
+        };
+
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let currentModalProduct = null;
+        let selectedModalVariant = null;
+
+        // Populate product grid
+        function populateProducts(filterCategory = 'all') {
+            const productsGrid = document.getElementById('products-grid');
+            productsGrid.innerHTML = ''; // Clear existing products
+
+            Object.keys(products).forEach(productId => {
+                const product = products[productId];
+                if (filterCategory === 'all' || product.category === filterCategory) {
+                    const productCardHTML = `
+                        <div class="col-lg-4 col-md-6 product-item" data-category="${product.category}" data-product-id="${productId}">
+                            <div class="product-card">
+                                <img src="${product.image}" alt="${product.title}" class="product-image">
+                                <div class="product-info">
+                                    <h3 class="product-title">${product.title}</h3>
+                                    <p class="product-description">${product.description}</p>
+                                    <div class="product-rating">
+                                        <div class="stars">
+                                            ${getStarsHTML(product.rating)}
+                                        </div>
+                                        <span class="rating-text">(${product.rating}) ${product.reviews} reviews</span>
+                                    </div>
+                                    <div class="product-price">PKR ${product.variants[0].price} - PKR ${product.variants[product.variants.length - 1].price}</div>
+                                    <div class="product-controls">
+                                        <button class="add-to-cart-btn" onclick="openProductOptionsModal('${productId}')">
+                                            <i class="fas fa-cart-plus"></i> Add to Cart
+                                        </button>
+                                    </div>
+                                    <button class="view-details-btn" onclick="viewProduct('${productId}')">View Details</button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    productsGrid.insertAdjacentHTML('beforeend', productCardHTML);
+                }
+            });
+            // Re-observe product cards for animation after populating
+            observeProductCards();
+        }
+
+        // Get stars HTML for ratings
+        function getStarsHTML(rating) {
+            let starsHTML = '';
+            for (let i = 1; i <= 5; i++) {
+                const starClass = i <= Math.floor(rating) ? 'fas fa-star' : (i - 0.5 <= rating ? 'fas fa-star-half-alt' : 'far fa-star');
+                starsHTML += `<i class="${starClass}"></i>`;
+            }
+            return starsHTML;
+        }
+
+        // Product Filter Functionality
+        function filterProducts(category) {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            
+            // Remove active class from all buttons
+            filterBtns.forEach(btn => btn.classList.remove('active'));
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+            
+            // Repopulate products based on filter
+            populateProducts(category);
+        }
+
+        // Open Product Options Modal
+        function openProductOptionsModal(productId) {
+            currentModalProduct = products[productId];
+            if (!currentModalProduct) return;
+
+            // Populate modal content
+            document.getElementById('modal-product-title').textContent = currentModalProduct.title;
+            document.getElementById('modal-product-description').textContent = currentModalProduct.description;
+
+            const modalVariantOptions = document.getElementById('modal-variant-options');
+            modalVariantOptions.innerHTML = ''; // Clear previous variants
+
+            currentModalProduct.variants.forEach((variant, index) => {
+                const variantDiv = document.createElement('div');
+                variantDiv.className = `variant-option ${index === 0 ? 'active' : ''}`;
+                variantDiv.onclick = () => selectVariantInModal(variantDiv, variant.weight, variant.price);
+                variantDiv.innerHTML = `
+                    <div class="variant-weight">${variant.weight.toUpperCase()}</div>
+                    <div class="variant-price">PKR ${variant.price.toLocaleString()}</div>
+                `;
+                modalVariantOptions.appendChild(variantDiv);
+            });
+
+            // Set initial selected variant and quantity
+            selectedModalVariant = currentModalProduct.variants[0];
+            document.getElementById('modal-quantity-display').textContent = '1';
+            document.getElementById('modal-product-price').textContent = `PKR ${selectedModalVariant.price.toLocaleString()}`;
+
+            // Attach event listeners for quantity control in modal
+            document.getElementById('modal-decrease-qty').onclick = decreaseModalQuantity;
+            document.getElementById('modal-increase-qty').onclick = increaseModalQuantity;
+            document.getElementById('modal-add-to-cart-btn').onclick = addToCartFromModal;
+
+            // Show the modal
+            const productOptionsModal = new bootstrap.Modal(document.getElementById('productOptionsModal'));
+            productOptionsModal.show();
+        }
+
+        // Select Variant in Modal
+        function selectVariantInModal(element, weight, price) {
+            // Remove active class from all variants in modal
+            document.querySelectorAll('#modal-variant-options .variant-option').forEach(option => {
+                option.classList.remove('active');
+            });
+            
+            // Add active class to selected variant
+            element.classList.add('active');
+            
+            // Update selected variant in modal context
+            selectedModalVariant = { weight, price };
+            
+            // Update displayed price in modal
+            document.getElementById('modal-product-price').textContent = `PKR ${price.toLocaleString()}`;
+        }
+
+        // Increase Quantity in Modal
+        function increaseModalQuantity() {
+            const quantityDisplay = document.getElementById('modal-quantity-display');
+            let currentValue = parseInt(quantityDisplay.textContent);
+            if (currentValue < 10) {
+                quantityDisplay.textContent = currentValue + 1;
+            }
+        }
+
+        // Decrease Quantity in Modal
+        function decreaseModalQuantity() {
+            const quantityDisplay = document.getElementById('modal-quantity-display');
+            let currentValue = parseInt(quantityDisplay.textContent);
+            if (currentValue > 1) {
+                quantityDisplay.textContent = currentValue - 1;
+            }
+        }
+
+        // Add to Cart from Modal
+        function addToCartFromModal() {
+            if (!currentModalProduct || !selectedModalVariant) return;
+
+            const quantity = parseInt(document.getElementById('modal-quantity-display').textContent);
+            const productName = currentModalProduct.title;
+            const variant = selectedModalVariant.weight;
+            const price = selectedModalVariant.price;
+            const image = currentModalProduct.image; // Use product's main image
+
+            // Check if product with this variant already exists in cart
+            const existingItemIndex = cart.findIndex(item => 
+                item.name === productName && item.variant === variant
+            );
+            
+            if (existingItemIndex !== -1) {
+                cart[existingItemIndex].quantity += quantity;
+            } else {
+                cart.push({
+                    name: productName,
+                    variant: variant,
+                    price: price,
+                    quantity: quantity,
+                    image: image
+                });
+            }
+            
+            // Save cart to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+            
+            // Update cart UI (sidebar)
+            updateCartUI();
+            
+            // Provide visual feedback
+            const modalAddToCartBtn = document.getElementById('modal-add-to-cart-btn');
+            modalAddToCartBtn.classList.add('adding');
+            modalAddToCartBtn.innerHTML = '<i class="fas fa-check"></i> Added!';
+            
+            // Add cart animation
+            const cartIcon = document.querySelector('.cart-icon');
+            cartIcon.classList.add('cart-animation');
+            
+            setTimeout(() => {
+                modalAddToCartBtn.classList.remove('adding');
+                modalAddToCartBtn.innerHTML = '<i class="fas fa-shopping-cart"></i> Add to Cart';
+                cartIcon.classList.remove('cart-animation');
+                // Hide the modal after successful addition
+                const productOptionsModal = bootstrap.Modal.getInstance(document.getElementById('productOptionsModal'));
+                if (productOptionsModal) productOptionsModal.hide();
+            }, 1000);
+        }
+
+        // Update cart UI (consistent with other pages)
+        function updateCartUI() {
+            const cartCount = document.getElementById('cart-count');
+            const cartItems = document.getElementById('cart-items');
+            const cartTotal = document.getElementById('cart-total');
+            const checkoutBtn = document.getElementById('checkout-btn');
+            
+            // Calculate total items
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            
+            // Show/hide cart count badge
+            if (totalItems > 0) {
+                cartCount.style.display = 'flex';
+            } else {
+                cartCount.style.display = 'none';
+            }
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p style="text-align: center; color: #ccc; margin-top: 2rem;">Your cart is empty</p>';
+                cartTotal.style.display = 'none';
+                checkoutBtn.style.display = 'none';
+            } else {
+                // Display cart items
+                cartItems.innerHTML = cart.map(item => `
+                    <div class="cart-item">
+                        <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                        <div class="cart-item-info">
+                            <div class="cart-item-title">${item.name}</div>
+                            <div class="cart-item-price">PKR ${item.price.toLocaleString()} ${item.variant ? `(${item.variant})` : ''}</div>
+                            <div class="cart-item-quantity">Qty: ${item.quantity}</div>
+                        </div>
+                        <button class="remove-item" onclick="removeFromCart('${item.name}', '${item.variant || ''}')">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                `).join('');
+                
+                // Calculate and display total
+                const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                cartTotal.textContent = `Total: PKR ${total.toLocaleString()}`;
+                cartTotal.style.display = 'block';
+                checkoutBtn.style.display = 'block';
+            }
+        }
+
+        // Remove from cart (consistent with other pages)
+        function removeFromCart(productName, variant) {
+            cart = cart.filter(item => !(item.name === productName && (item.variant || '') === variant));
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartUI();
+        }
+
+        // Toggle cart sidebar (consistent with other pages)
+        function toggleCart() {
+            const cartSidebar = document.getElementById('cart-sidebar');
+            const cartOverlay = document.getElementById('cart-overlay');
+            
+            cartSidebar.classList.toggle('open');
+            cartOverlay.classList.toggle('show');
+        }
+
+        // Checkout functionality (consistent with other pages)
+        function checkout() {
+            if (cart.length === 0) {
+                showCustomMessage('Your cart is empty! Please add items before proceeding to checkout.');
+                return;
+            }
+            window.location.href = 'checkout.html'; // Redirect to the new checkout page
+        }
+
+        // Custom message box function (replaces alert)
+        function showCustomMessage(message) {
+            const messageBox = document.createElement('div');
+            messageBox.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: var(--card-dark); /* Dark mode background */
+                color: var(--text-light); /* Light text */
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 5px 15px rgba(255,255,255,0.3); /* Light shadow */
+                z-index: 1100;
+                text-align: center;
+                max-width: 90%;
+                font-family: 'Inter', sans-serif;
+            `;
+            messageBox.innerHTML = `
+                <p style="white-space: pre-wrap;">${message}</p>
+                <button onclick="this.parentNode.remove()" style="
+                    background-color: var(--primary-yellow);
+                    color: var(--primary-black);
+                    border: none;
+                    padding: 10px 20px;
+                    border-radius: 5px;
+                    margin-top: 15px;
+                    cursor: pointer;
+                    font-weight: 600;
+                ">OK</button>
+            `;
+            document.body.appendChild(messageBox);
+        }
+
+        // View Product Details
+        function viewProduct(productId) {
+            localStorage.setItem('selectedProduct', productId);
+            window.location.href = 'product-detail.html'; // Navigate to product-detail page
+        }
+
+        // Back to Top Functionality
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Show/Hide Back to Top Button
+        function toggleBackToTopButton() {
+            const backToTopBtn = document.querySelector('.back-to-top');
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        }
+
+        // Intersection Observer for animations
+        function observeProductCards() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in-up');
+                        // No need to unobserve if you want the animation to repeat on scroll up/down
+                        // observer.unobserve(entry.target); 
+                    } else {
+                        // Optional: remove class when out of view if you want re-animation on scroll into view
+                        // entry.target.classList.remove('fade-in-up');
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe all product cards
+            const productCards = document.querySelectorAll('.product-card');
+            productCards.forEach(card => {
+                observer.observe(card);
+            });
+        }
+
+        // ADDED JAVASCRIPT: This function will find the current page's nav link and make it 'active'
+        function setActiveNavLink() {
+            const currentPath = window.location.pathname.split('/').pop(); // Gets the filename (e.g., "products.html")
+            const navLinks = document.querySelectorAll('.navbar-nav .nav-link'); // Selects all nav links
+
+            navLinks.forEach(link => {
+                link.classList.remove('active'); // Remove 'active' from all links first to ensure only one is active
+                const linkPath = link.getAttribute('href').split('/').pop(); // Get filename from link's href
+
+                if (currentPath === linkPath) {
+                    link.classList.add('active'); // If it matches the current page, add 'active' class
+                }
+            });
+        }
+        // END OF ADDED JAVASCRIPT
+
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // No need to load theme from localStorage, body is hardcoded to dark-mode
+            populateProducts(); // Load all products initially
+            updateCartUI(); // Update cart UI based on localStorage
+            
+            // CALL ADDED JAVASCRIPT: This line executes the function above when the page loads
+            setActiveNavLink(); 
+            // END OF CALL TO ADDED JAVASCRIPT
+            // ADDED LOGIC: Check for URL parameter and apply filter on page load
+            const urlParams = new URLSearchParams(window.location.search);
+            const categoryFromUrl = urlParams.get('category');
+            if (categoryFromUrl) {
+            // Find the corresponding filter button and click it to trigger filtering
+            const filterButton = document.querySelector(`.filter-btn[onclick="filterProducts('${categoryFromUrl}')"]`);
+            if (filterButton) {
+            filterButton.click(); // Programmatically click the button to trigger filter
+            } else {
+        // If the category in URL doesn't have a matching button, still filter
+        // (This might happen if there's a typo in URL or button not added yet)
+        filterProducts(categoryFromUrl); 
+                             }
+                        }
+            // Add scroll event listener for back to top button
+            window.addEventListener('scroll', toggleBackToTopButton);
+            
+            // Initial observation of product cards
+            observeProductCards();
+
+            // Quantity controls were removed from individual cards, now handled in modal.
+            // Old quantity functions are removed from here.
+        });
+
+        // jQuery animations for enhanced user experience
+        $(document).ready(function() {
+            // Navbar background change on scroll
+            $(window).scroll(function() {
+                if ($(this).scrollTop() > 50) {
+                    $('.navbar').addClass('scrolled');
+                } else {
+                    $('.navbar').removeClass('scrolled');
+                }
+            });
+            
+            // Product card hover effects - still apply to the card itself
+            $('.product-card').hover(
+                function() {
+                    $(this).find('.product-image').addClass('hovered');
+                },
+                function() {
+                    $(this).find('.product-image').removeClass('hovered');
+                }
+            );
+        });
+    </script>
+</body>
+</html>

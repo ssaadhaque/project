@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore the visual journey of Star Organic Farm - a gallery showcasing our farms, organic produce, and sustainable practices.">
+    <meta name="keywords" content="organic farm gallery, farm photos, organic produce pictures, sustainable farming showcase, Star Organic Farm, Pakistan agriculture, fresh produce">
+    <title>Showcase Gallery - Star Organic Farm - Premium Organic Products Since 1988</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="search.js"></script>
+    <style>
+        /* CSS Variables for consistent theming (Copied from existing files) */
+        :root {
+            --primary-yellow: #FFD700;
+            --dark-yellow: #FFA500;
+            --primary-black: #1a1a1a;
+            --secondary-black: #2d2d2d;
+            --text-light: #ffffff;
+            --text-dark: #333333;
+            --bg-light: #ffffff;
+            --bg-dark: #121212;
+            --card-light: #ffffff;
+            --card-dark: #1e1e1e;
+            --success-green: #28a745;
+        }
+
+        /* Base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
+            transition: all 0.3s ease;
+            background-color: var(--bg-dark); /* Always dark mode */
+            color: var(--text-light); /* Always light text */
+            padding-top: 90px; /* Adjust for fixed navbar */
+        }
+
+        /* Navbar Styles (Consistent with other pages) */
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-black), var(--secondary-black));
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--primary-yellow) !important;
+            text-decoration: none;
+        }
+
+        .navbar-nav .nav-link {
+            color: var(--text-light) !important;
+            font-weight: 500;
+            margin: 0 0.75rem;
+            transition: all 0.3s ease;
+            position: relative;
+            white-space: nowrap;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: var(--primary-yellow) !important;
+            transform: translateY(-2px);
+        }
+
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: var(--primary-yellow);
+            transition: all 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover::after,
+        .navbar-nav .nav-link.active::after { /* Added active state */
+            width: 100%;
+            left: 0;
+        }
+
+        /* Cart Icon */
+        .cart-icon {
+            position: relative;
+            background: var(--primary-yellow);
+            border: none;
+            border-radius: 50px;
+            padding: 0.5rem 1rem;
+            color: var(--primary-black);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-right: 1rem;
+            cursor: pointer;
+        }
+
+        .cart-icon:hover {
+            background: var(--dark-yellow);
+            transform: scale(1.05);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #dc3545;
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            min-width: 24px;
+        }
+
+        /* Search Bar Styles */
+        .navbar .form-control {
+            border-radius: 20px;
+            border: 1px solid #666; /* Adjusted for dark mode */
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            margin-right: 0.5rem;
+            background-color: #444; /* Adjusted for dark mode */
+            color: var(--text-light);
+        }
+
+        .navbar .btn-outline-success {
+            border-radius: 20px;
+            border: 1px solid var(--primary-yellow);
+            color: var(--primary-yellow);
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .navbar .btn-outline-success:hover {
+            background-color: var(--primary-yellow);
+            color: var(--primary-black);
+        }
+
+        /* Showcase Page Specific Styles */
+        .showcase-hero-section {
+            background-color: var(--card-dark); /* Solid background */
+            color: var(--text-light);
+            height: 40vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding: 2rem;
+            overflow: hidden;
+        }
+
+        .showcase-hero-content {
+            position: relative;
+            z-index: 2;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .showcase-hero-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary-yellow);
+            text-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        .showcase-hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: #e0e0e0;
+            text-shadow: 0 0 5px rgba(0,0,0,0.4);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* General Section Styling */
+        .section-padding {
+            padding: 5rem 0;
+        }
+
+        .section-title-main {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-yellow);
+            position: relative;
+        }
+
+        .section-title-main::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--dark-yellow);
+            border-radius: 2px;
+        }
+
+        .text-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #ccc;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            background-color: var(--secondary-black);
+        }
+
+        .gallery-item {
+            background: var(--card-dark);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative; /* Needed for absolute positioning of images */
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
+        .gallery-image-container {
+            width: 100%;
+            height: 250px;
+            position: relative;
+            overflow: hidden; /* Ensure images don't overflow */
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: opacity 0.5s ease-in-out, transform 0.3s ease; /* Smooth fade and slight scale */
+        }
+
+        .gallery-item .img-back {
+            opacity: 0; /* Hidden by default */
+        }
+
+        .gallery-item:hover .img-front {
+            opacity: 0; /* Fade out front image on hover */
+        }
+
+        .gallery-item:hover .img-back {
+            opacity: 1; /* Fade in back image on hover */
+            transform: scale(1.05); /* Slight zoom on hover image */
+        }
+
+        .gallery-info {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .gallery-info h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-light);
+            margin-bottom: 0.75rem;
+        }
+
+        .gallery-info p {
+            color: #bbb;
+            font-size: 0.95rem;
+            flex-grow: 1;
+        }
+
+        /* Call to Action for more content */
+        .more-content-cta {
+            background-color: var(--bg-dark);
+            text-align: center;
+        }
+
+        .btn-explore {
+            background: linear-gradient(135deg, var(--primary-yellow), var(--dark-yellow));
+            border: none;
+            color: var(--primary-black) !important;
+            padding: 1rem 2.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-explore:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.6);
+        }
+
+
+        /* Cart Sidebar (Consistent with other pages) */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100vh;
+            background: var(--card-dark);
+            box-shadow: -5px 0 15px rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+            z-index: 1050;
+            overflow-y: auto;
+        }
+
+        .cart-sidebar.open {
+            right: 0;
+        }
+
+        .cart-header {
+            background: var(--primary-black);
+            color: var(--text-light);
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .cart-content {
+            padding: 1.5rem;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #333;
+        }
+
+        .cart-item-image {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-right: 1rem;
+        }
+
+        .cart-item-info {
+            flex-grow: 1;
+        }
+
+        .cart-item-title {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+            color: var(--text-light);
+        }
+
+        .cart-item-price {
+            color: var(--primary-yellow);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .cart-item-quantity {
+            color: #ccc;
+            font-size: 0.8rem;
+        }
+
+        .remove-item {
+            background: #dc3545;
+            border: none;
+            color: white;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .remove-item:hover {
+            background: #c82333;
+            transform: scale(1.1);
+        }
+
+        .cart-total {
+            background: var(--primary-yellow);
+            color: var(--primary-black);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .checkout-btn {
+            background: var(--primary-black);
+            color: var(--text-light);
+            border: none;
+            padding: 1rem;
+            border-radius: 10px;
+            width: 100%;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .checkout-btn:hover {
+            background: var(--secondary-black);
+            transform: translateY(-2px);
+        }
+
+        /* Cart Overlay */
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1040;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .cart-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Back to Top Button (Consistent with other pages) */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary-yellow);
+            color: var(--primary-black);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1000;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--dark-yellow);
+            transform: translateY(-3px);
+        }
+
+        /* Footer (Consistent with other pages) */
+        .footer {
+            background: linear-gradient(135deg, var(--primary-black), var(--secondary-black));
+            color: var(--text-light);
+            padding: 3rem 0 1rem;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            font-family: 'Outfit', sans-serif;
+            color: var(--primary-yellow);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            display: block;
+            transition: all 0.3s ease;
+            font-weight: 400;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-yellow);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            color: #999;
+            font-weight: 400;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Applying animations */
+        .animate-up {
+            opacity: 0; /* Hidden by default */
+        }
+        .animate-up.in-view {
+            animation: fadeInUp 0.7s ease-out forwards;
+        }
+
+        .animate-left {
+            opacity: 0;
+        }
+        .animate-left.in-view {
+            animation: slideInLeft 0.7s ease-out forwards;
+        }
+
+        .animate-right {
+            opacity: 0;
+        }
+        .animate-right.in-view {
+            animation: slideInRight 0.7s ease-out forwards;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 991px) { /* Adjust breakpoint for navbar collapse */
+            .navbar-nav {
+                margin-top: 1rem;
+            }
+            .navbar .form-control {
+                margin-right: 0;
+                margin-bottom: 0.5rem;
+                width: 100%;
+            }
+            .navbar .btn-outline-success {
+                width: 100%;
+            }
+            .showcase-hero-title {
+                font-size: 3rem;
+            }
+            .showcase-hero-subtitle {
+                font-size: 1.2rem;
+            }
+            .section-title-main {
+                font-size: 2.5rem;
+            }
+            .gallery-item {
+                margin-bottom: 2rem;
+            }
+            .cart-sidebar {
+                width: 100%; /* Full width on smaller screens */
+                right: -100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .showcase-hero-title {
+                font-size: 2.5rem;
+            }
+            .showcase-hero-subtitle {
+                font-size: 1rem;
+            }
+        }
+        @media (max-width: 576px) {
+            .showcase-hero-title {
+                font-size: 2rem;
+            }
+            .showcase-hero-subtitle {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Hamburger Menu Icon Styling */
+        .navbar-toggler-icon {
+            /* Bootstrap default is a gray SVG, override to white */
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: 0 0 0 0.25rem rgba(255, 215, 0, 0.5); /* Yellow glow */
+            outline: 0; /* Remove default outline */
+        }
+    </style>
+</head>
+<body class="dark-mode">
+    <!-- Navbar (Copied from existing files) -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-leaf"></i> Star Organic Farm
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0"> 
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="queries.html">Queries</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="showcase.html">Showcase Gallery</a>
+                    </li>
+                </ul>
+                <form class="d-flex me-2" role="search" action="products.html" method="get">
+                    <input class="form-control me-2" type="search" id="search-input" name="query" placeholder="Search products..." aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form> 
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0"> 
+                    <li class="nav-item">
+                        <button class="cart-icon" onclick="toggleCart()">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count" id="cart-count">0</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Showcase Hero Section -->
+    <section class="showcase-hero-section">
+        <div class="container showcase-hero-content">
+            <h1 class="showcase-hero-title animate-up">Our Organic World: A Visual Journey</h1>
+            <p class="showcase-hero-subtitle animate-up" data-delay="0.2s">
+                Explore moments from our farms, the freshness of our produce, and our commitment to sustainable practices.
+            </p>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section section-padding">
+        <div class="container">
+            <h2 class="section-title-main animate-up">From Our Farms to Your Table</h2>
+            <div class="row mt-5">
+                <div class="col-lg-4 col-md-6 mb-4 animate-up" data-delay="0.1s">
+                    <div class="gallery-item">
+                        <div class="gallery-image-container">
+                            <img src="images/Showcase Gallery and Other Images/Showcase Gallery/organicfarm.png" alt="Vast organic fields (Front)" class="img-front">
+                            <img src="images/Showcase Gallery and Other Images/Showcase Gallery/farmlife.png" alt="Farm life with crops (Back)" class="img-back">
+                        </div>
+                        <div class="gallery-info">
+                            <h4>Our Lush Green Fields</h4>
+                            <p>Sprawling organic fields where our premium produce thrives under natural sunlight and care.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4 animate-up" data-delay="0.2s">
+                    <div class="gallery-item">
+                        <div class="gallery-image-container">
+                            <img src="images/Showcase Gallery and Other Images/Showcase Gallery/freshharvest.png" alt="Freshly harvested vegetables (Front)" class="img-front">
+                            <img src="images/Showcase Gallery and Other Images/Showcase Gallery/harvestcloseup.png" alt="Close-up of fresh harvest (Back)" class="img-back">
+                        </div>
+                        <div class="gallery-info">
+                            <h4>The Fresh Harvest</h4>
+                            <p>Hand-picked vegetables and grains, brought directly from our fields, bursting with freshness.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4 animate-up" data-delay="0.3s">
+                    <div class="gallery-item">
+                        <div class="gallery-image-container">
+                            <img src="images/Showcase Gallery and Other Images/Showcase Gallery/sustainablepractice.png" alt="Farmer implementing sustainable practices (Front)" class="img-front">
+                            <img src="images/Showcase Gallery and Other Images/Showcase Gallery/soilhealth.png" alt="Healthy soil being cultivated (Back)" class="img-back">
+                        </div>
+                        <div class="gallery-info">
+                            <h4>Sustainable Practices</h4>
+                            <p>Our dedicated farmers using eco-friendly methods to nurture the soil and protect the environment.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4 animate-up" data-delay="0.4s">
+                    <div class="gallery-item">
+                        <div class="gallery-image-container">
+                            <img src="" alt="Organic spices drying (Front)" class="img-front">
+                            <img src="images/Showcase Gallery and Other Images/Showcase Gallery/purespice.png" alt="Organic spices drying (Front)" class="img-front">
+                            <img src="images/Showcase Gallery and Other Images/Showcase Gallery/spiceblend.png" alt="Assortment of vibrant spices (Back)" class="img-back">
+                        </div>
+                        <div class="gallery-info">
+                            <h4>Aromatic Spices</h4>
+                            <p>Naturally dried and processed spices, preserving their rich aroma and potent flavors.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4 animate-up" data-delay="0.5s">
+                    <div class="gallery-item">
+                        <div class="gallery-image-container">
+                            <img src="images/Showcase Gallery and Other Images/Showcase Gallery/healthygrains.png" alt="Bags of organic grains (Front)" class="img-front">
+                            <img src="images/Showcase Gallery and Other Images/Showcase Gallery/graintexture.png" alt="Close-up of healthy grain texture (Back)" class="img-back">
+                        </div>
+                        <div class="gallery-info">
+                            <h4>Wholesome Grains</h4>
+                            <p>Premium organic rice, wheat, and cereals, carefully stored to maintain their natural goodness.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4 animate-up" data-delay="0.6s">
+                    <div class="gallery-item">
+                        <div class="gallery-image-container">
+                            <img src="images/Showcase Gallery and Other Images/Showcase Gallery/delivery.png" alt="Delivery van leaving farm (Front)" class="img-front">
+                            <img src="images/Showcase Gallery and Other Images/Showcase Gallery/farmtohome.png" alt="Organically packaged products (Back)" class="img-back">
+                        </div>
+                        <div class="gallery-info">
+                            <h4>Direct to Your Home</h4>
+                            <p>Ensuring efficient and careful delivery, bringing farm-fresh products right to your doorstep.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- More Content Call to Action -->
+    <section class="more-content-cta section-padding pt-0">
+        <div class="container">
+            <h2 class="section-title-main animate-up">Want to See More of Our Story?</h2>
+            <p class="text-content mb-4 animate-up" data-delay="0.1s">
+                Dive deeper into our commitment to organic farming and meet the team behind our pure products.
+            </p>
+            <a href="about.html" class="btn btn-lg btn-explore animate-up" data-delay="0.2s">
+                Visit Our About Us Page <i class="fas fa-info-circle ms-2"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer (Copied from existing files) -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Star Organic Farm</h4>
+                    <p>Premium organic products since 1988. We are committed to providing the finest quality organic products to consumers across Pakistan and beyond, fostering health and sustainability.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <a href="index.html">Home</a>
+                    <a href="products.html">Products</a>
+                    <a href="about.html">About Us</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="queries.html">Queries</a>
+                    <a href="showcase.html">Showcase Gallery</a> <!-- Updated link -->
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms & Conditions</a>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Product Categories</h4>
+                    <a href="products.html?category=rice">Rice & Rice Products</a>
+                    <a href="products.html?category=spices">Spices & Condiments</a>
+                    <a href="products.html?category=pulses">Pulses & Lentils</a>
+                    <a href="products.html?category=oils">Cooking Oils</a>
+                    <a href="products.html?category=wheat">Wheat & Flour</a>
+                    <a href="products.html?category=cereals">Nutritious Cereals</a>
+                    <a href="products.html?category=nuts">Nuts</a>
+                    <a href="products.html?category=fruits">Fruit Pulps</a>
+                    <a href="products.html?category=agro">Agro Products</a>
+                    <a href="products.html?category=sweeteners">Natural Sweeteners</a>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Organic Farm Road, Lahore, Punjab, Pakistan</p>
+                    <p><i class="fas fa-phone"></i> +92 300 1234567</p>
+                    <p><i class="fas fa-envelope"></i> info@starorganicfarm.pk</p>
+                    <p><i class="fas fa-clock"></i> Mon - Sat: 9:00 AM - 6:00 PM</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Star Organic Farm. All rights reserved. | Established 1988 | Made in Pakistan</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar (Consistent with other pages) -->
+    <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3 class="cart-title">Shopping Cart</h3>
+            <button class="close-cart" onclick="toggleCart()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-content">
+            <div id="cart-items">
+                <p style="text-align: center; color: #666; margin-top: 2rem;">Your cart is empty</p>
+            </div>
+            <div class="cart-total" id="cart-total" style="display: none;">
+                Total: PKR 0
+            </div>
+            <button class="checkout-btn" id="sidebar-checkout-btn" style="display: none;" onclick="redirectToCheckout()">
+                Proceed to Checkout
+            </button>
+        </div>
+    </div>
+
+    <!-- Back to Top Button (Consistent with other pages) -->
+    <button class="back-to-top" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        // Cart functionality (simplified for static pages)
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Update cart UI based on localStorage
+        function updateCartUI() {
+            const cartCount = document.getElementById('cart-count');
+            const cartItems = document.getElementById('cart-items');
+            const cartTotal = document.getElementById('cart-total');
+            const sidebarCheckoutBtn = document.getElementById('sidebar-checkout-btn');
+
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+
+            if (totalItems > 0) {
+                cartCount.style.display = 'flex';
+            } else {
+                cartCount.style.display = 'none';
+            }
+
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p style="text-align: center; color: #666; margin-top: 2rem;">Your cart is empty</p>';
+                cartTotal.style.display = 'none';
+                sidebarCheckoutBtn.style.display = 'none';
+            } else {
+                cartItems.innerHTML = cart.map(item => `
+                    <div class="cart-item">
+                        <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                        <div class="cart-item-info">
+                            <div class="cart-item-title">${item.name}</div>
+                            <div class="cart-item-price">PKR ${item.price.toLocaleString()} ${item.variant ? `(${item.variant})` : ''}</div>
+                            <div class="cart-item-quantity">Qty: ${item.quantity}</div>
+                        </div>
+                        <button class="remove-item" onclick="removeFromCart('${item.name}', '${item.variant || ''}')">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                `).join('');
+
+                const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                cartTotal.textContent = `Total: PKR ${total.toLocaleString()}`;
+                cartTotal.style.display = 'block';
+                sidebarCheckoutBtn.style.display = 'block';
+            }
+        }
+
+        // Remove from cart
+        function removeFromCart(productName, variant) {
+            cart = cart.filter(item => !(item.name === productName && (item.variant || '') === variant));
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartUI();
+        }
+
+        // Toggle cart sidebar
+        function toggleCart() {
+            const cartSidebar = document.getElementById('cart-sidebar');
+            const cartOverlay = document.getElementById('cart-overlay');
+
+            cartSidebar.classList.toggle('open');
+            cartOverlay.classList.toggle('show');
+        }
+
+        // Custom message box function (replaces alert)
+        function showCustomMessage(message) {
+            const messageBox = document.createElement('div');
+            messageBox.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: var(--card-dark); /* Dark mode background */
+                color: var(--text-light); /* Light text */
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 5px 15px rgba(255,255,255,0.3); /* Light shadow */
+                z-index: 1100;
+                text-align: center;
+                max-width: 90%;
+                font-family: 'Inter', sans-serif;
+            `;
+            messageBox.innerHTML = `
+                <p style="white-space: pre-wrap;">${message}</p>
+                <button onclick="this.parentNode.remove()" style="
+                    background-color: var(--primary-yellow);
+                    color: var(--primary-black);
+                    border: none;
+                    padding: 10px 20px;
+                    border-radius: 5px;
+                    margin-top: 15px;
+                    cursor: pointer;
+                    font-weight: 600;
+                ">OK</button>
+            `;
+            document.body.appendChild(messageBox);
+        }
+
+        // Redirect to checkout page
+        function redirectToCheckout() {
+            if (cart.length === 0) {
+                showCustomMessage('Your cart is empty! Please add items before proceeding to checkout.');
+                return;
+            }
+            window.location.href = 'checkout.html';
+        }
+
+        // Back to Top Functionality
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Show/Hide Back to Top Button
+        function toggleBackToTopButton() {
+            const backToTopBtn = document.querySelector('.back-to-top');
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        }
+
+        // Intersection Observer for animations on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCartUI(); // Initial cart UI update
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = entry.target;
+                        const delay = target.dataset.delay || '0s';
+                        target.style.animationDelay = delay;
+                        target.classList.add('in-view');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.animate-up, .animate-left, .animate-right').forEach(element => {
+                observer.observe(element);
+            });
+
+            // Add scroll event listener for back to top button
+            window.addEventListener('scroll', toggleBackToTopButton);
+        });
+
+        // jQuery animations (consistent with other pages)
+        $(document).ready(function() {
+            // Navbar background change on scroll
+            $(window).scroll(function() {
+                if ($(this).scrollTop() > 50) {
+                    $('.navbar').addClass('scrolled');
+                } else {
+                    $('.navbar').removeClass('scrolled');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

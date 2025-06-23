@@ -1,0 +1,1460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Star Organic Farm - Premium organic products, spices, cereals, pulses, and cooking oils since 1988">
+    <meta name="keywords" content="organic products, spices, cereals, pulses, cooking oils, wheat, rice, organic farm, Pakistan, home, fresh, healthy, natural">
+    <title>Home - Star Organic Farm - Premium Organic Products Since 1988</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="search.js"></script>
+    <style>
+        /* CSS Variables for consistent theming */
+        :root {
+            --primary-yellow: #FFD700;
+            --dark-yellow: #FFA500;
+            --primary-black: #1a1a1a;
+            --secondary-black: #2d2d2d;
+            --text-light: #ffffff;
+            --text-dark: #333333;
+            --bg-light: #ffffff;
+            --bg-dark: #121212;
+            --card-light: #ffffff;
+            --card-dark: #1e1e1e;
+            --success-green: #28a745;
+        }
+
+        /* Base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
+            transition: all 0.3s ease;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            padding-top: 90px; /* Adjust for fixed navbar */
+        }
+
+        /* Navbar Styles (Consistent with other pages) */
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-black), var(--secondary-black));
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--primary-yellow) !important;
+            text-decoration: none;
+        }
+
+        .navbar-nav .nav-link {
+            color: var(--text-light) !important;
+            font-weight: 500;
+            /* Increased margin for better spacing on larger screens, allowing text to breathe */
+            margin: 0 0.75rem; 
+            transition: all 0.3s ease;
+            position: relative;
+            white-space: nowrap; /* Prevent text from wrapping */
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: var(--primary-yellow) !important;
+            transform: translateY(-2px);
+        }
+
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: var(--primary-yellow);
+            transition: all 0.3s ease;
+        }
+
+        /* MODIFIED: Added .active state to the nav-link underline */
+        .navbar-nav .nav-link:hover::after,
+        .navbar-nav .nav-link.active::after {
+            width: 100%;
+            left: 0;
+        }
+
+        /* ADDED: Style for active nav-link text color */
+        .navbar-nav .nav-link.active {
+            color: var(--primary-yellow) !important;
+        }
+
+        /* Cart Icon */
+        .cart-icon {
+            position: relative;
+            background: var(--primary-yellow);
+            border: none;
+            border-radius: 50px;
+            padding: 0.5rem 1rem;
+            color: var(--primary-black);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-right: 1rem;
+            cursor: pointer;
+        }
+
+        .cart-icon:hover {
+            background: var(--dark-yellow);
+            transform: scale(1.05);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #dc3545;
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            min-width: 24px;
+        }
+
+        /* Search Bar Styles */
+        .navbar .form-control {
+            border-radius: 20px;
+            border: 1px solid #ccc;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            margin-right: 0.5rem;
+            background-color: #444; /* Always dark for dark mode */
+            color: var(--text-light);
+            border-color: #666;
+        }
+
+        .navbar .btn-outline-success {
+            border-radius: 20px;
+            border: 1px solid var(--primary-yellow);
+            color: var(--primary-yellow);
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .navbar .btn-outline-success:hover {
+            background-color: var(--primary-yellow);
+            color: var(--primary-black);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            height: 80vh;
+            background: url('images/Showcase Gallery and Other Images/Hero Sect/logo.png') no-repeat center center/cover; 
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            padding: 2rem; /* Add padding for smaller screens */
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.65); /* Slightly darker overlay for better text contrast */
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeIn 1.0s ease-out; /* Adjusted hero content fade in duration */
+        }
+
+        .hero-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--primary-yellow);
+            line-height: 1.1;
+            text-shadow: 0 0 10px rgba(0,0,0,0.5); /* Add subtle text shadow */
+        }
+
+        .hero-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+            color: #e0e0e0;
+            text-shadow: 0 0 5px rgba(0,0,0,0.4);
+        }
+
+        .hero-buttons .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 0 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary-yellow {
+            background: linear-gradient(135deg, var(--primary-yellow), var(--dark-yellow));
+            color: var(--primary-black);
+            border: none;
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        .btn-primary-yellow:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.6);
+        }
+
+        .btn-outline-light {
+            background: transparent;
+            border: 2px solid var(--text-light);
+            color: var(--text-light);
+        }
+
+        .btn-outline-light:hover {
+            background: var(--text-light);
+            color: var(--primary-black);
+            transform: translateY(-3px);
+        }
+
+        /* General Section Styling */
+        .section-padding {
+            padding: 5rem 0;
+        }
+
+        .section-title-main {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-yellow);
+            position: relative;
+        }
+
+        .section-title-main::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--dark-yellow);
+            border-radius: 2px;
+        }
+
+        .text-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #ccc;
+        }
+
+        /* Features Section */
+        .features-section {
+            background-color: var(--secondary-black);
+        }
+
+        .feature-card {
+            background: var(--card-dark);
+            border-radius: 15px;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
+        .feature-card .icon {
+            font-size: 3rem;
+            color: var(--primary-yellow);
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover .icon {
+            transform: scale(1.1);
+        }
+
+        .feature-card h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.7rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .feature-card p {
+            color: #bbb;
+            font-size: 1rem;
+        }
+
+        /* New Section: Our Commitment to Quality */
+        .quality-section {
+            background-color: var(--bg-dark);
+        }
+
+        .quality-image {
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+        }
+
+        .quality-content h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-yellow);
+            margin-bottom: 1.5rem;
+        }
+
+        .quality-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .quality-list {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .quality-list li {
+            font-size: 1.1rem;
+            color: #e0e0e0;
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .quality-list li i {
+            color: var(--success-green);
+            position: absolute;
+            left: 0;
+            top: 5px;
+            font-size: 1.2rem;
+        }
+
+        /* New Section: Benefits of Organic Living */
+        .benefits-section {
+            background-color: var(--secondary-black);
+        }
+
+        .benefit-item {
+            background: var(--card-dark);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .benefit-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
+        .benefit-item .icon {
+            font-size: 3rem;
+            color: var(--primary-yellow);
+            margin-bottom: 1.5rem;
+        }
+
+        .benefit-item h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.7rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .benefit-item p {
+            color: #bbb;
+            font-size: 1.0rem;
+        }
+
+
+        /* Products Preview Section (General style, but not used on home page for product cards anymore) */
+        .products-preview-section {
+            background-color: var(--secondary-black);
+        }
+
+        .product-card-home {
+            background: var(--card-dark);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+            cursor: pointer;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            color: var(--text-light);
+        }
+
+        .product-card-home:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .product-card-home .product-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+
+        .product-card-home:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        .product-card-home .product-info {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card-home .product-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+
+        .product-card-home .product-price {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-yellow);
+            margin-bottom: 1rem;
+        }
+
+        .btn-view-product {
+            background: var(--primary-yellow);
+            border: none;
+            color: var(--primary-black);
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .btn-view-product:hover {
+            background: var(--dark-yellow);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            background-color: var(--bg-dark);
+        }
+
+        .testimonial-card {
+            background: var(--card-dark);
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            text-align: center;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: #bbb;
+            flex-grow: 1;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary-yellow);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .testimonial-rating .fas {
+            color: var(--primary-yellow);
+            font-size: 1rem;
+        }
+
+        /* Call to Action Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-yellow), var(--dark-yellow));
+            padding: 5rem 0;
+            text-align: center;
+            color: var(--primary-black);
+        }
+
+        .cta-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .cta-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+            color: #333;
+        }
+
+        .btn-shop-now {
+            background: var(--primary-black);
+            color: var(--text-light);
+            padding: 1.2rem 3.5rem;
+            border-radius: 30px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            border: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .btn-shop-now:hover {
+            background: var(--secondary-black);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+        }
+
+        /* Cart Sidebar (Consistent with other pages) */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100vh;
+            background: var(--card-dark); /* Always dark */
+            box-shadow: -5px 0 15px rgba(255,255,255,0.1); /* Adjusted shadow for dark mode */
+            transition: all 0.3s ease;
+            z-index: 1050;
+            overflow-y: auto;
+        }
+
+        .cart-sidebar.open {
+            right: 0;
+        }
+
+        .cart-header {
+            background: var(--primary-black);
+            color: var(--text-light);
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .cart-content {
+            padding: 1.5rem;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #333; /* Adjusted border for dark mode */
+        }
+
+        .cart-item-image {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-right: 1rem;
+        }
+
+        .cart-item-info {
+            flex-grow: 1;
+        }
+
+        .cart-item-title {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+            color: var(--text-light); /* Always light text */
+        }
+
+        .cart-item-price {
+            color: var(--primary-yellow);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .cart-item-quantity {
+            color: #ccc; /* Adjusted for dark mode */
+            font-size: 0.8rem;
+        }
+
+        .remove-item {
+            background: #dc3545;
+            border: none;
+            color: white;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .remove-item:hover {
+            background: #c82333;
+            transform: scale(1.1);
+        }
+
+        .cart-total {
+            background: var(--primary-yellow);
+            color: var(--primary-black);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .checkout-btn {
+            background: var(--primary-black);
+            color: var(--text-light);
+            border: none;
+            padding: 1rem;
+            border-radius: 10px;
+            width: 100%;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .checkout-btn:hover {
+            background: var(--secondary-black);
+            transform: translateY(-2px);
+        }
+
+        /* Cart Overlay */
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1040;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .cart-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Back to Top Button (Consistent with other pages) */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary-yellow);
+            color: var(--primary-black);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1000;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--dark-yellow);
+            transform: translateY(-3px);
+        }
+
+        /* Footer (Consistent with other pages) */
+        .footer {
+            background: linear-gradient(135deg, var(--primary-black), var(--secondary-black));
+            color: var(--text-light);
+            padding: 3rem 0 1rem;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            font-family: 'Outfit', sans-serif;
+            color: var(--primary-yellow);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            display: block;
+            transition: all 0.3s ease;
+            font-weight: 400;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-yellow);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            color: #999;
+            font-weight: 400;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Applying animations - Reduced animation duration */
+        .fade-in {
+            animation: fadeIn 1.0s ease-out forwards;
+        }
+
+        .animate-up {
+            opacity: 0; /* Hidden by default */
+        }
+        .animate-up.in-view {
+            animation: fadeInUp 0.5s ease-out forwards; /* Faster duration */
+        }
+        
+        .animate-left {
+            opacity: 0;
+        }
+        .animate-left.in-view {
+            animation: slideInLeft 0.5s ease-out forwards; /* Faster duration */
+        }
+
+        .animate-right {
+            opacity: 0;
+        }
+        .animate-right.in-view {
+            animation: slideInRight 0.5s ease-out forwards; /* Faster duration */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 991px) { /* Adjust breakpoint for navbar collapse */
+            .navbar-nav {
+                margin-top: 1rem;
+            }
+            /* Adjust search form and cart icon for collapsed navbar */
+            .navbar .d-flex.align-items-center { /* New class for alignment */
+                flex-direction: column;
+                width: 100%;
+                align-items: flex-start; /* Align left */
+            }
+            .navbar .form-control {
+                margin-right: 0 !important; /* Override default margin */
+                margin-bottom: 0.5rem;
+                width: 100%;
+            }
+            .navbar .btn-outline-success {
+                width: 100%;
+                margin-bottom: 1rem; /* Space after search button */
+            }
+            .cart-icon {
+                margin-right: 0 !important; /* Override default margin */
+                margin-bottom: 1rem; /* Space after cart button */
+                width: 100%;
+                justify-content: center; /* Center content in button */
+                display: flex; /* Enable flex for centering */
+            }
+
+            .hero-title {
+                font-size: 3.5rem;
+            }
+            .hero-subtitle {
+                font-size: 1.4rem;
+            }
+            .hero-buttons .btn {
+                margin: 0.5rem 0;
+                width: 80%; /* Make buttons full width on small screens */
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .section-title-main {
+                font-size: 2.5rem;
+            }
+            .quality-image, .benefit-item {
+                margin-bottom: 2rem;
+            }
+            .cta-title {
+                font-size: 2.5rem;
+            }
+            .cta-subtitle {
+                font-size: 1.2rem;
+            }
+            .cart-sidebar {
+                width: 100%; /* Full width on smaller screens */
+                right: -100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            .feature-card, .benefit-item {
+                margin-bottom: 2rem;
+            }
+        }
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+        }
+
+        /* Hamburger Menu Icon Styling */
+        .navbar-toggler-icon {
+            /* Bootstrap default is a gray SVG, override to white */
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: 0 0 0 0.25rem rgba(255, 215, 0, 0.5); /* Yellow glow */
+            outline: 0; /* Remove default outline */
+        }
+    </style>
+</head>
+<body class="dark-mode">
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-leaf"></i> Star Organic Farm
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About Us</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="queries.html">Queries</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="showcase.html">Showcase Gallery</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center mb-2 mb-lg-0">
+                    <form class="d-flex me-lg-2" role="search" action="products.html" method="get">
+                        <input class="form-control me-2" type="search" id="search-input" name="query" placeholder="Search products..." aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form> 
+                    <button class="cart-icon" onclick="toggleCart()">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cart-count">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="container hero-content">
+            <h1 class="hero-title animate-up">Taste the Difference of True Organic Purity</h1>
+            <p class="hero-subtitle animate-up" data-delay="0.2s"> Bringing you the finest organic products from our sustainable farms to your table since 1988.
+                Nourish your body and soul with nature's unparalleled best.
+            </p>
+            <div class="hero-buttons animate-up" data-delay="0.4s"> <a href="products.html" class="btn btn-primary-yellow">Shop Our Farm Fresh Goods <i class="fas fa-arrow-right ms-2"></i></a>
+                <a href="#quality" class="btn btn-outline-light">Discover Our Promise <i class="fas fa-seedling ms-2"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section section-padding">
+        <div class="container">
+            <h2 class="section-title-main animate-up">Why Choose Star Organic Farm?</h2>
+            <div class="row text-center mt-5">
+                <div class="col-lg-4 col-md-6 mb-4 animate-up" data-delay="0.1s"> <div class="feature-card">
+                        <div class="icon"><i class="fas fa-certificate"></i></div>
+                        <h4>100% Organic Certified</h4>
+                        <p>Our products are grown without pesticides, herbicides, or synthetic fertilizers, ensuring pure, natural goodness and superior taste.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4 animate-up" data-delay="0.2s"> <div class="feature-card">
+                        <div class="icon"><i class="fas fa-hand-holding-heart"></i></div>
+                        <h4>Sustainable Farming</h4>
+                        <p>We believe in nurturing the Earth. Our practices prioritize soil health, biodiversity, and environmental stewardship for a healthier planet.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4 animate-up" data-delay="0.3s"> <div class="feature-card">
+                        <div class="icon"><i class="fas fa-truck-loading"></i></div>
+                        <h4>Fresh & Fast Delivery</h4>
+                        <p>From our farm to your doorstep, we ensure every product arrives fresh, packed with care and delivered promptly for your convenience.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="quality" class="quality-section section-padding">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0 animate-left" data-delay="0.1s"> <img src="images/Showcase Gallery and Other Images/Hero Sect/qc.png" alt="Commitment to Quality" class="img-fluid quality-image">
+                </div>
+                <div class="col-lg-6 animate-right" data-delay="0.2s"> <div class="quality-content">
+                        <h3>Our Unwavering Commitment to Quality & Purity</h3>
+                        <p class="text-content">
+                            At Star Organic Farm, quality isn't just a buzzword; it's the foundation of everything we do.
+                            Since 1988, we have meticulously upheld the highest standards in organic farming and processing.
+                            Every product, from our aromatic spices to our wholesome grains, undergoes rigorous quality checks
+                            to ensure it reaches your kitchen in its purest, most potent form.
+                        </p>
+                        <p class="text-content">
+                            We work directly with certified organic farmers who share our passion for sustainable agriculture.
+                            This direct partnership allows us to maintain complete transparency and control over the entire
+                            supply chain, guaranteeing that no harmful chemicals, synthetic additives, or GMOs ever touch
+                            our products. Our commitment extends to preserving the natural nutrients and authentic flavors
+                            that nature intended, providing you with food you can truly trust.
+                        </p>
+                        <ul class="quality-list">
+                            <li><i class="fas fa-check-circle"></i> Rigorous Organic Certification Standards</li>
+                            <li><i class="fas fa-check-circle"></i> Non-GMO and Chemical-Free Promise</li>
+                            <li><i class="fas fa-check-circle"></i> Sustainable Sourcing & Ethical Practices</li>
+                            <li><i class="fas fa-check-circle"></i> Advanced Quality Control & Testing</li>
+                            <li><i class="fas fa-check-circle"></i> Freshness Guaranteed from Farm to Table</li>
+                        </ul>
+                        <p class="text-content">
+                            Experience the difference that true commitment to quality makes. Choose Star Organic Farm for a healthier, more flavorful life.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials-section section-padding">
+        <div class="container">
+            <h2 class="section-title-main animate-up">What Our Valued Customers Say</h2>
+            <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="testimonial-card animate-up">
+                                    <p class="testimonial-text">
+                                        "Star Organic Farm has completely changed my perception of organic products.
+                                        The quality is consistently exceptional, and their commitment to sustainability
+                                        is truly inspiring. Their Basmati Rice is a must-try for anyone seeking genuine purity!"
+                                    </p>
+                                    <div class="author-info">
+                                        <div class="testimonial-author">Aisha Khan</div>
+                                        <div class="testimonial-rating">
+                                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="testimonial-card animate-up">
+                                    <p class="testimonial-text">
+                                        "I'm so impressed with the freshness and flavor of everything I've ordered,
+                                        especially their organic spices. It's great to know I'm feeding my family healthy,
+                                        pure ingredients. Highly recommend Star Organic Farm to everyone!"
+                                    </p>
+                                    <div class="author-info">
+                                        <div class="testimonial-author">Usman Ali</div>
+                                        <div class="testimonial-rating">
+                                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="testimonial-card animate-up">
+                                    <p class="testimonial-text">
+                                        "Excellent customer service and incredibly fast delivery! The organic olive oil
+                                        is of superb quality. It's a joy to support a local farm that cares so much about
+                                        its products and customers. A truly reliable source for organic goodness."
+                                    </p>
+                                    <div class="author-info">
+                                        <div class="testimonial-author">Fatima Zafar</div>
+                                        <div class="testimonial-rating">
+                                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="benefits-section section-padding">
+        <div class="container">
+            <h2 class="section-title-main animate-up">Embrace a Healthier You: The Benefits of Organic Living</h2>
+            <p class="text-center text-content mb-5 animate-up" data-delay="0.1s"> Choosing organic isn't just a trend; it's a profound commitment to a healthier lifestyle and a thriving planet. Discover the myriad advantages of incorporating certified organic products into your daily routine.
+            </p>
+
+            <div class="row text-center mt-5">
+                <div class="col-lg-4 col-md-6 mb-4 animate-up" data-delay="0.1s"> <div class="benefit-item">
+                        <div class="icon"><i class="fas fa-leaf"></i></div>
+                        <h4>Richer in Essential Nutrients</h4>
+                        <p>Organic foods are often richer in beneficial nutrients like vitamins, minerals, and disease-fighting antioxidants, contributing significantly to your overall well-being and vitality.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4 animate-up" data-delay="0.2s"> <div class="benefit-item">
+                        <div class="icon"><i class="fas fa-shield-alt"></i></div>
+                        <h4>Free from Harmful Chemicals</h4>
+                        <p>Enjoy peace of mind knowing your food is free from synthetic pesticides, herbicides, fungicides, and GMOs, protecting you and your family from harmful chemical residues.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4 animate-up" data-delay="0.3s"> <div class="benefit-item">
+                        <div class="icon"><i class="fas fa-globe-americas"></i></div>
+                        <h4>Supports a Healthier Planet</h4>
+                        <p>Organic farming practices actively promote biodiversity, conserve precious water resources, reduce soil erosion, and minimize pollution, fostering a truly sustainable and resilient ecosystem.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4 animate-up" data-delay="0.4s"> <div class="benefit-item">
+                        <div class="icon"><i class="fas fa-utensils"></i></div>
+                        <h4>Unparalleled Taste and Authentic Flavor</h4>
+                        <p>Many connoisseurs agree: organic produce, grains, and spices simply taste superior. Grown in nutrient-rich, healthy soil and allowed to mature naturally, they develop deeper, more authentic flavors that elevate every meal.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4 animate-up" data-delay="0.5s"> <div class="benefit-item">
+                        <div class="icon"><i class="fas fa-paw"></i></div>
+                        <h4>Ethical Animal Welfare Standards</h4>
+                        <p>When it comes to organic animal products, strict guidelines ensure livestock are treated humanely, provided with ample space, natural living conditions, and fed organic feed, free from growth hormones and routine antibiotics.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4 animate-up" data-delay="0.6s"> <div class="benefit-item">
+                        <div class="icon"><i class="fas fa-handshake"></i></div>
+                        <h4>Empowers Local Communities</h4>
+                        <p>By choosing organic, you often directly support local farmers and small businesses, fostering economic growth and strengthening community resilience. It's a choice that benefits everyone, from farm to fork.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-5 animate-up" data-delay="0.7s"> <a href="products.html" class="btn btn-primary-yellow">Explore Our Wholesome Organic Selection <i class="fas fa-shopping-basket ms-2"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section section-padding">
+        <div class="container">
+            <h2 class="cta-title animate-up">Ready to Start Your Organic Journey?</h2>
+            <p class="cta-subtitle animate-up">
+                Explore our wide range of premium organic products and bring unparalleled health and flavor to your home.
+            </p>
+            <a href="products.html" class="btn btn-shop-now animate-up">Shop Our Products Today <i class="fas fa-shopping-basket ms-3"></i></a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Star Organic Farm</h4>
+                    <p>Premium organic products since 1988. We are committed to providing the finest quality organic products to consumers across Pakistan and beyond, fostering health and sustainability.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <a href="index.html">Home</a>
+                    <a href="products.html">Products</a>
+                    <a href="about.html">About Us</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="queries.html">Queries</a>
+                    <a href="showcase.html">Showcase Gallery</a>
+                    <a href="shippinginfo.html">Shipping Info</a>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Product Categories</h4>
+                    <a href="products.html?category=rice">Rice & Rice Products</a>
+                    <a href="products.html?category=spices">Spices & Condiments</a>
+                    <a href="products.html?category=pulses">Pulses & Lentils</a>
+                    <a href="products.html?category=oils">Cooking Oils</a>
+                    <a href="products.html?category=wheat">Wheat & Flour</a>
+                    <a href="products.html?category=cereals">Nutritious Cereals</a>
+                    <a href="products.html?category=nuts">Nuts</a>
+                    <a href="products.html?category=fruits">Fruit Pulps</a>
+                    <a href="products.html?category=agro">Agro Products</a>
+                    <a href="products.html?category=sweeteners">Natural Sweeteners</a>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Organic Farm Road, Lahore, Punjab, Pakistan</p>
+                    <p><i class="fas fa-phone"></i> +92 300 1234567</p>
+                    <p><i class="fas fa-envelope"></i> info@starorganicfarm.pk</p>
+                    <p><i class="fas fa-clock"></i> Mon - Sat: 9:00 AM - 6:00 PM</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Star Organic Farm. All rights reserved. | Established 1988 | Made in Pakistan</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3 class="cart-title">Shopping Cart</h3>
+            <button class="close-cart" onclick="toggleCart()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-content">
+            <div id="cart-items">
+                <p style="text-align: center; color: #666; margin-top: 2rem;">Your cart is empty</p>
+            </div>
+            <div class="cart-total" id="cart-total" style="display: none;">
+                Total: PKR 0
+            </div>
+            <button class="checkout-btn" id="checkout-btn" style="display: none;" onclick="checkout()">
+                Proceed to Checkout
+            </button>
+        </div>
+    </div>
+
+    <button class="back-to-top" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        // Cart functionality (simplified for homepage as no products are directly added here)
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Update cart UI based on localStorage
+        function updateCartUI() {
+            const cartCount = document.getElementById('cart-count');
+            const cartItems = document.getElementById('cart-items');
+            const cartTotal = document.getElementById('cart-total');
+            const checkoutBtn = document.getElementById('checkout-btn');
+
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+
+            if (totalItems > 0) {
+                cartCount.style.display = 'flex';
+            } else {
+                cartCount.style.display = 'none';
+            }
+
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p style="text-align: center; color: #666; margin-top: 2rem;">Your cart is empty</p>';
+                cartTotal.style.display = 'none';
+                checkoutBtn.style.display = 'none';
+            } else {
+                cartItems.innerHTML = cart.map(item => `
+                    <div class="cart-item">
+                        <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                        <div class="cart-item-info">
+                            <div class="cart-item-title">${item.name}</div>
+                            <div class="cart-item-price">PKR ${item.price.toLocaleString()} ${item.variant ? `(${item.variant})` : ''}</div>
+                            <div class="cart-item-quantity">Qty: ${item.quantity}</div>
+                        </div>
+                        <button class="remove-item" onclick="removeFromCart('${item.name}', '${item.variant || ''}')">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                `).join('');
+
+                const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                cartTotal.textContent = `Total: PKR ${total.toLocaleString()}`;
+                cartTotal.style.display = 'block';
+                checkoutBtn.style.display = 'block';
+            }
+        }
+
+        // Remove from cart
+        function removeFromCart(productName, variant) {
+            cart = cart.filter(item => !(item.name === productName && (item.variant || '') === variant));
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartUI();
+        }
+
+        // Toggle cart sidebar
+        function toggleCart() {
+            const cartSidebar = document.getElementById('cart-sidebar');
+            const cartOverlay = document.getElementById('cart-overlay');
+
+            cartSidebar.classList.toggle('open');
+            cartOverlay.classList.toggle('show');
+        }
+
+        // Checkout functionality
+        function checkout() {
+            if (cart.length === 0) {
+                showCustomMessage('Your cart is empty! Please add items before proceeding to checkout.');
+                return;
+            }
+            window.location.href = 'checkout.html'; // Redirect to the new checkout page
+        }
+
+        // Custom message box function (replaces alert)
+        function showCustomMessage(message) {
+            const messageBox = document.createElement('div');
+            messageBox.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: var(--card-dark); /* Dark mode background */
+                color: var(--text-light); /* Light text */
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 5px 15px rgba(255,255,255,0.3); /* Light shadow */
+                z-index: 1100;
+                text-align: center;
+                max-width: 90%;
+                font-family: 'Inter', sans-serif;
+            `;
+            messageBox.innerHTML = `
+                <p style="white-space: pre-wrap;">${message}</p>
+                <button onclick="this.parentNode.remove()" style="
+                    background-color: var(--primary-yellow);
+                    color: var(--primary-black);
+                    border: none;
+                    padding: 10px 20px;
+                    border-radius: 5px;
+                    margin-top: 15px;
+                    cursor: pointer;
+                    font-weight: 600;
+                ">OK</button>
+            `;
+            document.body.appendChild(messageBox);
+        }
+
+        // Back to Top Functionality
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Show/Hide Back to Top Button
+        function toggleBackToTopButton() {
+            const backToTopBtn = document.querySelector('.back-to-top');
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        }
+
+        // ADDED: Function to set the active nav link based on the current page
+        function setActiveNavLink() {
+            const currentPath = window.location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+
+            navLinks.forEach(link => {
+                link.classList.remove('active'); // Remove active from all links first
+                const linkPath = link.getAttribute('href').split('/').pop();
+
+                if (currentPath === linkPath) {
+                    link.classList.add('active'); // Add active to the current page's link
+                }
+            });
+        }
+
+
+        // Intersection Observer for animations on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCartUI(); // Initial cart UI update
+            setActiveNavLink(); // ADDED: Call this function on page load
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = entry.target;
+                        const delay = target.dataset.delay || '0s';
+                        target.style.animationDelay = delay;
+                        target.classList.add('in-view');
+                        // No need to unobserve if animation is one-time
+                        // observer.unobserve(target);
+                    } else {
+                        // Optional: remove in-view if you want animations to reset when scrolled out
+                        // entry.target.classList.remove('in-view');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.animate-up, .animate-left, .animate-right').forEach(element => {
+                observer.observe(element);
+            });
+
+            // Add scroll event listener for back to top button
+            window.addEventListener('scroll', toggleBackToTopButton);
+        });
+
+        // jQuery animations (if any specific jQuery animations needed for homepage, add here)
+        $(document).ready(function() {
+            // Navbar background change on scroll (as present in products.html)
+            $(window).scroll(function() {
+                if ($(this).scrollTop() > 50) {
+                    $('.navbar').addClass('scrolled');
+                } else {
+                    $('.navbar').removeClass('scrolled');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
